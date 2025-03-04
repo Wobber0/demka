@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Test
 {
@@ -24,22 +24,33 @@ namespace Test
         string appP;
         private void ChangePassword_Click(object sender, EventArgs e)
         {
-           AdminWin adm = new AdminWin();
            UserWin user = new UserWin();
-            if (oldP=="a")
+            // строка подключения к БД
+            string connStr = "server=localhost;user=root;database=hotelbd;password=root;";
+            // создаём объект для подключения к БД
+            MySqlConnection conn = new MySqlConnection(connStr);
+            // устанавливаем соединение с БД
+            conn.Open();
+            // запрос
+            string sql = "SELECT password FROM users";
+            // объект для выполнения SQL-запроса
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            // объект для чтения ответа сервера
+            MySqlDataReader reader = command.ExecuteReader();
+            // читаем результат
+            while (reader.Read())
             {
-                adm.Show();
-                this.Hide();
+                if (oldP == reader[0].ToString())
+                {
+                    user.Show();
+                    this.Hide();
+                    return;
+                }
             }
-            else if(oldP=="e")
-            {
-                user.Show();
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Такого пароля не существует!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+            MessageBox.Show("Такого пароля не существует!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            reader.Close(); // закрываем reader
+            // закрываем соединение с БД
+            conn.Close();
         }
 
         private void approvalPasswordBox_TextChanged(object sender, EventArgs e)

@@ -36,19 +36,15 @@
             this.UserGridView = new System.Windows.Forms.DataGridView();
             this.info = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Privet = new System.Windows.Forms.Label();
             this.SaveBut = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserGridView)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.SandyBrown;
-            this.menuStrip1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.моиЗадачиToolStripMenuItem,
             this.информационнаяПанельToolStripMenuItem,
@@ -56,23 +52,22 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(10, 15, 10, 15);
-            this.menuStrip1.Size = new System.Drawing.Size(646, 58);
+            this.menuStrip1.Size = new System.Drawing.Size(646, 49);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // моиЗадачиToolStripMenuItem
             // 
             this.моиЗадачиToolStripMenuItem.Name = "моиЗадачиToolStripMenuItem";
-            this.моиЗадачиToolStripMenuItem.Size = new System.Drawing.Size(147, 28);
+            this.моиЗадачиToolStripMenuItem.Size = new System.Drawing.Size(84, 19);
             this.моиЗадачиToolStripMenuItem.Text = "Мои задачи";
             this.моиЗадачиToolStripMenuItem.Click += new System.EventHandler(this.MyTasksMenuItem_Click);
             // 
             // информационнаяПанельToolStripMenuItem
             // 
-            this.информационнаяПанельToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.информационнаяПанельToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.информационнаяПанельToolStripMenuItem.Name = "информационнаяПанельToolStripMenuItem";
-            this.информационнаяПанельToolStripMenuItem.Size = new System.Drawing.Size(170, 28);
+            this.информационнаяПанельToolStripMenuItem.Size = new System.Drawing.Size(93, 19);
             this.информационнаяПанельToolStripMenuItem.Text = "Информация";
             this.информационнаяПанельToolStripMenuItem.Click += new System.EventHandler(this.InfoMenuItem_Click);
             // 
@@ -80,7 +75,7 @@
             // 
             this.выходToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(85, 28);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(54, 19);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
@@ -96,42 +91,19 @@
             // info
             // 
             this.info.AutoSize = true;
-            this.info.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.info.Location = new System.Drawing.Point(3, 0);
             this.info.Name = "info";
-            this.info.Size = new System.Drawing.Size(0, 22);
+            this.info.Size = new System.Drawing.Size(0, 13);
             this.info.TabIndex = 3;
             // 
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Controls.Add(this.Privet);
             this.panel1.Controls.Add(this.info);
             this.panel1.Location = new System.Drawing.Point(12, 91);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(634, 450);
             this.panel1.TabIndex = 4;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(119, 140);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(367, 243);
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
-            // Privet
-            // 
-            this.Privet.AutoSize = true;
-            this.Privet.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Privet.Location = new System.Drawing.Point(105, 38);
-            this.Privet.Name = "Privet";
-            this.Privet.Size = new System.Drawing.Size(381, 60);
-            this.Privet.TabIndex = 5;
-            this.Privet.Text = "Добро пожаловать в систему!\r\n       Удачной вам работы!";
             // 
             // SaveBut
             // 
@@ -139,8 +111,6 @@
             this.SaveBut.BackColor = System.Drawing.Color.SandyBrown;
             this.SaveBut.FlatAppearance.BorderSize = 0;
             this.SaveBut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveBut.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SaveBut.ForeColor = System.Drawing.SystemColors.ControlText;
             this.SaveBut.Location = new System.Drawing.Point(12, 506);
             this.SaveBut.Name = "SaveBut";
             this.SaveBut.Size = new System.Drawing.Size(199, 49);
@@ -171,7 +141,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.UserGridView)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -186,8 +155,6 @@
         private System.Windows.Forms.Label info;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ToolStripMenuItem моиЗадачиToolStripMenuItem;
-        private System.Windows.Forms.Label Privet;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button SaveBut;
     }
 }

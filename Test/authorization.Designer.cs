@@ -47,7 +47,6 @@
             this.groupBox1.Controls.Add(this.passwordBox);
             this.groupBox1.Controls.Add(this.loginBox);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(101, 55);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox1.Name = "groupBox1";
@@ -61,7 +60,6 @@
             this.autorizating.BackColor = System.Drawing.Color.Bisque;
             this.autorizating.FlatAppearance.BorderSize = 0;
             this.autorizating.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.autorizating.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.autorizating.Location = new System.Drawing.Point(107, 313);
             this.autorizating.Name = "autorizating";
             this.autorizating.Size = new System.Drawing.Size(161, 59);
@@ -73,7 +71,6 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(82, 195);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(94, 23);
@@ -83,7 +80,6 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(82, 88);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(76, 23);
