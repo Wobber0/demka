@@ -53,7 +53,6 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.SandyBrown;
-            this.menuStrip1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.выходToolStripMenuItem,
             this.новыйПользовательToolStripMenuItem,
@@ -134,8 +133,6 @@
             this.SaveBut.BackColor = System.Drawing.Color.SandyBrown;
             this.SaveBut.FlatAppearance.BorderSize = 0;
             this.SaveBut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SaveBut.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.SaveBut.ForeColor = System.Drawing.SystemColors.ControlText;
             this.SaveBut.Location = new System.Drawing.Point(34, 495);
             this.SaveBut.Name = "SaveBut";
             this.SaveBut.Size = new System.Drawing.Size(199, 49);
@@ -148,7 +145,6 @@
             // Privet
             // 
             this.Privet.AutoSize = true;
-            this.Privet.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Privet.Location = new System.Drawing.Point(29, 133);
             this.Privet.Name = "Privet";
             this.Privet.Size = new System.Drawing.Size(590, 60);
@@ -158,7 +154,6 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Location = new System.Drawing.Point(125, 196);
             this.pictureBox1.Name = "pictureBox1";
@@ -179,7 +174,6 @@
             // Report
             // 
             this.Report.AutoSize = true;
-            this.Report.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Report.Location = new System.Drawing.Point(3, 3);
             this.Report.Name = "Report";
             this.Report.Size = new System.Drawing.Size(787, 483);
@@ -197,7 +191,6 @@
             this.Controls.Add(this.SaveBut);
             this.Controls.Add(this.BDGridView);
             this.Controls.Add(this.menuStrip1);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdminWin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Главное меню";

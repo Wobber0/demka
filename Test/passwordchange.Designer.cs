@@ -52,7 +52,6 @@
             this.groupBox1.Controls.Add(this.OldPasswordBox);
             this.groupBox1.Controls.Add(this.NewPasswordBox);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(75, 48);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox1.Name = "groupBox1";
@@ -64,7 +63,6 @@
             // warningLbl
             // 
             this.warningLbl.AutoSize = true;
-            this.warningLbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.warningLbl.Location = new System.Drawing.Point(32, 242);
             this.warningLbl.Name = "warningLbl";
             this.warningLbl.Size = new System.Drawing.Size(0, 21);
@@ -73,7 +71,6 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(83, 195);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(238, 21);
@@ -93,7 +90,6 @@
             this.ChangePassword.BackColor = System.Drawing.Color.Bisque;
             this.ChangePassword.FlatAppearance.BorderSize = 0;
             this.ChangePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ChangePassword.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ChangePassword.Location = new System.Drawing.Point(113, 279);
             this.ChangePassword.Name = "ChangePassword";
             this.ChangePassword.Size = new System.Drawing.Size(161, 59);
@@ -105,7 +101,6 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label3.Location = new System.Drawing.Point(83, 120);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(200, 21);
@@ -115,7 +110,6 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label4.Location = new System.Drawing.Point(83, 53);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(211, 21);

@@ -47,8 +47,6 @@ namespace Test
 
         private void InfoMenuItem_Click(object sender, EventArgs e)
         {
-            Privet.Visible = false;
-            pictureBox1.Visible = false;
             UserGridView.Visible = false;
             panel1.Visible = true;
             SaveBut.Visible = false;
