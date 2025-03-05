@@ -16,17 +16,16 @@ namespace Test
     public partial class AdminWin : Form
     {
 
-        string connectionString = "Server=localhost;Port=3306;Database=hotelbd;Username=root;Password=root;";
+        string connectionString = "Server=localhost;Port=3306;Database=hotelbd;Username=root;Password=root;";//адрес подключения
         public AdminWin()
         {
             InitializeComponent();
 
             this.FormClosing += new FormClosingEventHandler(AdminWin_FormClosing);
-            saveFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
         }
 
 
-        void ShowClienttInGrid(string comm)
+        void ShowClienttInGrid(string comm)//шаблон показа таблиц
         {
             MySqlConnection conn = new MySqlConnection(connectionString);
             conn.Open();
@@ -43,86 +42,90 @@ namespace Test
             Application.Exit();
         }
 
-        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Exit_Click(object sender, EventArgs e)//возвращение к вкладке авторизации
         {
             authorization autor = new authorization();
             autor.Show();
             this.Hide();
         }
 
-        private void UsersMenuItem_Click(object sender, EventArgs e)
+        private void SaveBut_Click(object sender, EventArgs e)
         {
-            Privet.Visible = false;
-            pictureBox1.Visible = false;
-            BDGridView.Visible = true;
-            SaveBut.Visible = true;
-            ReportZone.Visible = false;
-            SaveBut.Text = "Сохранить изменения";
+            MessageBox.Show("Отчет был успешно сохранен!", "Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void Number_Click(object sender, EventArgs e)//показ номерного фонда
+        {
             try
             {
-                ShowClienttInGrid("SELECT login, password, role FROM users");
+                ShowClienttInGrid("SELECT * FROM number_of_rooms");
+                BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            }
+        }
+
+        private void Status_Click(object sender, EventArgs e)//показ статуса номеров
+        {
+            try
+            {
+                ShowClienttInGrid("SELECT number_of_rooms_number, status, departure_date FROM status_of_rooms");
+                BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             }
             catch
             {
                 MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-        }
-        private void ReportMenuItem_Click(object sender, EventArgs e)
-        {
-            BDGridView.Visible=false;
-            Privet.Visible = false;
-            pictureBox1.Visible = false;
-            ReportZone.Visible = true;
-            SaveBut.Visible = true;
-            Report.Visible = true ;
-            SaveBut.Text = "Сохранить в отдельный документ";
-            Report.MaximumSize = new System.Drawing.Size(520, Report.MaximumSize.Height);
         }
 
-        private void SaveBut_Click(object sender, EventArgs e)
+        private void Client_Click(object sender, EventArgs e)//показ клиентов
         {
-             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
-                 return;
-             // получаем выбранный файл
-             string filename = saveFileDialog1.FileName;
-             // сохраняем текст в файл
-             System.IO.File.WriteAllText(filename, Report.Text);
-            MessageBox.Show("Отчет был успешно сохранен!", "Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                ShowClienttInGrid("SELECT * FROM clients");
+                BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-        private void NumberMenuItem_Click(object sender, EventArgs e)
+        private void seeUsers_Click(object sender, EventArgs e)//показ пользователей
         {
-            Privet.Visible = false;
-            pictureBox1.Visible = false;
-            BDGridView.Visible = true;
-            SaveBut.Visible = true;
-            ReportZone.Visible = false;
-            SaveBut.Text = "Сохранить изменения";
-            ShowClienttInGrid("SELECT * FROM number_of_rooms");
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            try
+            {
+                ShowClienttInGrid("SELECT * FROM users");
+                BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
-        private void StatusMenuItem_Click(object sender, EventArgs e)
+        private void addUsers_Click(object sender, EventArgs e)//открытие окна добавления пользователей
         {
-            Privet.Visible = false;
-            pictureBox1.Visible = false;
-            BDGridView.Visible = true;
-            SaveBut.Visible = true;
-            ReportZone.Visible = false;
-            ShowClienttInGrid("SELECT number_of_rooms_number, status, departure_date FROM status_of_rooms");
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            addUsersForm addUsersForm = new addUsersForm();
+            addUsersForm.ShowDialog();
         }
 
-        private void ClientMenuItem_Click(object sender, EventArgs e)
+        private void delitUsers_Click(object sender, EventArgs e)//открытие окна удаления пользователей
         {
-            Privet.Visible = false;
-            pictureBox1.Visible = false;
-            BDGridView.Visible = true;
-            SaveBut.Visible = true;
-            ReportZone.Visible = false;
-            ShowClienttInGrid("SELECT number_of_rooms_number, name, entry, exit FROM clients");
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            delUsers delUsers = new delUsers();
+            delUsers.ShowDialog();
+            
         }
+
+        private void updateUsers_Click(object sender, EventArgs e)//открытие окна обновления пользователей
+        {
+            updateUsers updateUsers = new updateUsers();
+            updateUsers.ShowDialog();
+        }
+
     }
     }

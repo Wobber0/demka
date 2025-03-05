@@ -144,11 +144,29 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="addUsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="addUsersForm.Designer.cs">
+      <DependentUpon>addUsersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="authorization.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="authorization.Designer.cs">
       <DependentUpon>authorization.cs</DependentUpon>
+    </Compile>
+    <Compile Include="delUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="delUsers.Designer.cs">
+      <DependentUpon>delUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="updateUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="updateUsers.Designer.cs">
+      <DependentUpon>updateUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="userswin.cs">
       <SubType>Form</SubType>
@@ -170,8 +188,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="addUsersForm.resx">
+      <DependentUpon>addUsersForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="authorization.resx">
       <DependentUpon>authorization.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="delUsers.resx">
+      <DependentUpon>delUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="updateUsers.resx">
+      <DependentUpon>updateUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userswin.resx">
       <DependentUpon>userswin.cs</DependentUpon>

@@ -38,7 +38,7 @@ namespace Test
             // устанавливаем соединение с БД
             conn.Open();
             //создаем запрос обновления параметра бана и аутентификации
-            string query = $"update users SET ban = {ban}, auth = {auth} WHERE login = \"{loginBox.Text}\";";
+            string query = $"update users SET ban = {ban}, auth = {auth} WHERE login = '{loginBox.Text}';";
             MySqlCommand command = new MySqlCommand(query, conn);
             // выполняем запрос
             command.ExecuteNonQuery();
