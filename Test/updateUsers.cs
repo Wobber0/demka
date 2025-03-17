@@ -14,7 +14,7 @@ namespace Test
     public partial class updateUsers : Form
     {
         string ban;
-        string connStr = "server=localhost;user=root;database=hotelbd;password=root;";
+        string connStr = "server=localhost;user=root;database=atelie;password=root;";
         public updateUsers()
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace Test
             banBox.Items.Add("Нет");
             MySqlConnection connection = new MySqlConnection(connStr);
             connection.Open();
-            string query = "SELECT * FROM users";
+            string query = "SELECT * FROM user";
             MySqlCommand command = new MySqlCommand(query, connection);
             MySqlDataReader reader = command.ExecuteReader();
             //добавление вариантов для бокса с логинами
@@ -40,9 +40,10 @@ namespace Test
 
         private void ChangePassword_Click(object sender, EventArgs e)//изменение данных
         {
+            string user = SelectUserBox.Text;
             MySqlConnection connection = new MySqlConnection(connStr);
             connection.Open();
-            string sql = $"UPDATE users SET password = '{passwordBox.Text}', role = '{roleBox.Text}', ban = '{ban}' WHERE login = '{SelectUserBox.Text}';";
+            string sql = $"UPDATE user SET password = '{passwordBox.Text}', role = '{roleBox.Text}', ban = '{ban}', id = '{IDBox.Text}', login = '{SelectUserBox.Text}', name = '{FIOBox.Text}', salary = '{payBox.Text}', WHERE login = '{user}';";
             MySqlCommand command = new MySqlCommand(sql, connection);
             MySqlDataReader reader = command.ExecuteReader();
             connection.Close();
@@ -53,7 +54,7 @@ namespace Test
         {
             MySqlConnection connection = new MySqlConnection(connStr);
             connection.Open();
-            string query = $"SELECT * FROM users;";
+            string query = $"SELECT * FROM user;";
             MySqlCommand command = new MySqlCommand(query, connection);
             MySqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
@@ -68,6 +69,9 @@ namespace Test
                 {
                     passwordBox.Text = reader["password"].ToString();
                     roleBox.Text = reader["role"].ToString();
+                    FIOBox.Text = reader["name"].ToString();
+                    IDBox.Text = reader["id"].ToString();
+                    payBox.Text = reader["salary"].ToString();
                     if (Convert.ToInt32(reader["ban"]) > 0)
                     {
                         banBox.Text = "Нет";

@@ -1,6 +1,6 @@
 ﻿namespace Test
 {
-    partial class UserWin
+    partial class seamstressWin
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserWin));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(seamstressWin));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.моиЗадачиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.информационнаяПанельToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -119,7 +119,7 @@
             this.SaveBut.UseVisualStyleBackColor = false;
             this.SaveBut.Visible = false;
             // 
-            // UserWin
+            // seamstressWin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -133,7 +133,7 @@
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "UserWin";
+            this.Name = "seamstressWin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Главное меню";
             this.menuStrip1.ResumeLayout(false);

@@ -144,6 +144,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="accountantWin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="accountantWin.Designer.cs">
+      <DependentUpon>accountantWin.cs</DependentUpon>
+    </Compile>
     <Compile Include="addUsersForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,11 +174,11 @@
     <Compile Include="updateUsers.Designer.cs">
       <DependentUpon>updateUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="userswin.cs">
+    <Compile Include="seamstressWin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="userswin.Designer.cs">
-      <DependentUpon>userswin.cs</DependentUpon>
+    <Compile Include="seamstressWin.Designer.cs">
+      <DependentUpon>seamstressWin.cs</DependentUpon>
     </Compile>
     <Compile Include="adminwin.cs">
       <SubType>Form</SubType>
@@ -188,6 +194,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="accountantWin.resx">
+      <DependentUpon>accountantWin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="addUsersForm.resx">
       <DependentUpon>addUsersForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -200,8 +209,8 @@
     <EmbeddedResource Include="updateUsers.resx">
       <DependentUpon>updateUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="userswin.resx">
-      <DependentUpon>userswin.cs</DependentUpon>
+    <EmbeddedResource Include="seamstressWin.resx">
+      <DependentUpon>seamstressWin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="adminwin.resx">
       <DependentUpon>adminwin.cs</DependentUpon>

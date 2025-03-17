@@ -11,11 +11,11 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using MySql.Data.MySqlClient;
 namespace Test
 {
-    public partial class UserWin : Form
+    public partial class seamstressWin : Form
     {
-        string connectionString = "Server=localhost;Port=3306;Database=hotelbd;Username=root;Password=root;";
+        string connectionString = "Server=localhost;Port=3306;Database=atelie;Username=root;Password=root;";
 
-        public UserWin()
+        public seamstressWin()
         {
             InitializeComponent();
             this.FormClosing += new FormClosingEventHandler(UserWin_FormClosing);

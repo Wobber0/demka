@@ -13,7 +13,7 @@ namespace Test
 {
     public partial class delUsers : Form
     {
-        string connStr = "server=localhost;user=root;database=hotelbd;password=root;";
+        string connStr = "server=localhost;user=root;database=atelie;password=root;";
         public delUsers()
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace Test
             userBox.Items.Clear();
             MySqlConnection connection = new MySqlConnection(connStr);
             connection.Open();
-            string query = "SELECT * FROM users";
+            string query = "SELECT * FROM user";
             MySqlCommand command = new MySqlCommand(query, connection);
             MySqlDataReader reader = command.ExecuteReader();
             //добавление вариантов выбора в комбобокс с логинами
@@ -39,7 +39,7 @@ namespace Test
             {
                 MySqlConnection conn = new MySqlConnection(connStr);
                 conn.Open();
-                string qu = $"DELETE FROM users WHERE login = '{userBox.Text}'";
+                string qu = $"DELETE FROM user WHERE login = '{userBox.Text}'";
                 MySqlCommand comm = new MySqlCommand(qu, conn);
                 MySqlDataReader read = comm.ExecuteReader();
                 conn.Close();
@@ -47,7 +47,7 @@ namespace Test
                 //обновление списка
                 MySqlConnection connection = new MySqlConnection(connStr);
                 connection.Open();
-                string query = "SELECT * FROM users";
+                string query = "SELECT * FROM user";
                 MySqlCommand command = new MySqlCommand(query, connection);
                 MySqlDataReader reader = command.ExecuteReader();
                 userBox.Items.Clear();
@@ -57,6 +57,7 @@ namespace Test
                     userBox.Items.Add(name);
                 }
                 connection.Close();
+                userBox.Text = "";
             }
             catch (Exception ex)//неудачное удаление пользователя
             {

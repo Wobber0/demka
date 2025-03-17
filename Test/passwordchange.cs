@@ -22,35 +22,52 @@ namespace Test
         string oldP;
         string newP;
         string appP;
+        string connStr = "server=localhost;user=root;database=atelie;password=root;";
         private void ChangePassword_Click(object sender, EventArgs e)
         {
-           UserWin user = new UserWin();
-            // строка подключения к БД
-            string connStr = "server=localhost;user=root;database=hotelbd;password=root;";
-            // создаём объект для подключения к БД
-            MySqlConnection conn = new MySqlConnection(connStr);
-            // устанавливаем соединение с БД
-            conn.Open();
-            // запрос
-            string sql = "SELECT password FROM users";
-            // объект для выполнения SQL-запроса
-            MySqlCommand command = new MySqlCommand(sql, conn);
-            // объект для чтения ответа сервера
-            MySqlDataReader reader = command.ExecuteReader();
-            // читаем результат
-            while (reader.Read())
+            if(newP == appP)
             {
-                if (oldP == reader[0].ToString())
+                AdminWin admin = new AdminWin();
+                seamstressWin streams = new seamstressWin();
+                accountantWin accountant = new accountantWin();
+                // строка подключения к БД
+                // создаём объект для подключения к БД
+                MySqlConnection conn = new MySqlConnection(connStr);
+                // устанавливаем соединение с БД
+                conn.Open();
+                // запрос
+                string sql = "SELECT * FROM user";
+                // объект для выполнения SQL-запроса
+                MySqlCommand command = new MySqlCommand(sql, conn);
+                // объект для чтения ответа сервера
+                MySqlDataReader reader = command.ExecuteReader();
+                // читаем результат
+                while (reader.Read())
                 {
-                    user.Show();
-                    this.Hide();
-                    return;
+                    if (oldP == reader["password"].ToString())
+                    {
+                        switch(reader["role"].ToString())
+                        {
+                            case "Швея":
+                                streams.Show();
+                                this.Hide();
+                                return;
+                            case "Администратор":
+                                admin.Show();
+                                this.Hide();
+                                return;
+                            case "Бухгалтер":
+                                accountant.Show();
+                                this.Hide();
+                                return;
+                        }
+                    }
                 }
+                MessageBox.Show("Такого пароля не существует!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                reader.Close(); // закрываем reader
+                                // закрываем соединение с БД
+                conn.Close();
             }
-            MessageBox.Show("Такого пароля не существует!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            reader.Close(); // закрываем reader
-            // закрываем соединение с БД
-            conn.Close();
         }
 
         private void approvalPasswordBox_TextChanged(object sender, EventArgs e)
@@ -73,6 +90,15 @@ namespace Test
         private void passwordchange_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+            MySqlConnection conn = new MySqlConnection(connStr);
+            // устанавливаем соединение с БД
+            conn.Open();
+            // запрос
+            string sql = $"UPDATE user SET password = '{NewPasswordBox.Text}' WHERE password = '{OldPasswordBox.Text}';";
+            // объект для выполнения SQL-запроса
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            // объект для чтения ответа сервера
+            MySqlDataReader reader = command.ExecuteReader();
         }
     }
 }

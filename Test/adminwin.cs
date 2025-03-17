@@ -16,7 +16,7 @@ namespace Test
     public partial class AdminWin : Form
     {
 
-        string connectionString = "Server=localhost;Port=3306;Database=hotelbd;Username=root;Password=root;";//адрес подключения
+        string connectionString = "Server=localhost;Port=3306;Database=atelie;Username=root;Password=root;";//адрес подключения
         public AdminWin()
         {
             InitializeComponent();
@@ -48,58 +48,11 @@ namespace Test
             autor.Show();
             this.Hide();
         }
-
-        private void SaveBut_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Отчет был успешно сохранен!", "Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void Number_Click(object sender, EventArgs e)//показ номерного фонда
-        {
-            try
-            {
-                ShowClienttInGrid("SELECT * FROM number_of_rooms");
-                BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-            }
-        }
-
-        private void Status_Click(object sender, EventArgs e)//показ статуса номеров
-        {
-            try
-            {
-                ShowClienttInGrid("SELECT number_of_rooms_number, status, departure_date FROM status_of_rooms");
-                BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
-        private void Client_Click(object sender, EventArgs e)//показ клиентов
-        {
-            try
-            {
-                ShowClienttInGrid("SELECT * FROM clients");
-                BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
         private void seeUsers_Click(object sender, EventArgs e)//показ пользователей
         {
             try
             {
-                ShowClienttInGrid("SELECT * FROM users");
+                ShowClienttInGrid("SELECT * FROM user");
                 BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             }
             catch
@@ -126,6 +79,5 @@ namespace Test
             updateUsers updateUsers = new updateUsers();
             updateUsers.ShowDialog();
         }
-
     }
     }

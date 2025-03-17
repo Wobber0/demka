@@ -65,7 +65,7 @@
             this.warningLbl.AutoSize = true;
             this.warningLbl.Location = new System.Drawing.Point(32, 242);
             this.warningLbl.Name = "warningLbl";
-            this.warningLbl.Size = new System.Drawing.Size(0, 21);
+            this.warningLbl.Size = new System.Drawing.Size(0, 13);
             this.warningLbl.TabIndex = 6;
             // 
             // label1
@@ -73,7 +73,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(83, 195);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(238, 21);
+            this.label1.Size = new System.Drawing.Size(157, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Подтвердите новый пароль: *";
             // 
@@ -81,7 +81,7 @@
             // 
             this.approvalPasswordBox.Location = new System.Drawing.Point(86, 215);
             this.approvalPasswordBox.Name = "approvalPasswordBox";
-            this.approvalPasswordBox.Size = new System.Drawing.Size(212, 32);
+            this.approvalPasswordBox.Size = new System.Drawing.Size(212, 20);
             this.approvalPasswordBox.TabIndex = 4;
             this.approvalPasswordBox.TextChanged += new System.EventHandler(this.approvalPasswordBox_TextChanged);
             // 
@@ -103,7 +103,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(83, 120);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(200, 21);
+            this.label3.Size = new System.Drawing.Size(133, 13);
             this.label3.TabIndex = 3;
             this.label3.Text = "Введите новый пароль: *";
             // 
@@ -112,7 +112,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(83, 53);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(211, 21);
+            this.label4.Size = new System.Drawing.Size(138, 13);
             this.label4.TabIndex = 2;
             this.label4.Text = "Введите старый пароль: *";
             // 
@@ -120,7 +120,7 @@
             // 
             this.OldPasswordBox.Location = new System.Drawing.Point(86, 77);
             this.OldPasswordBox.Name = "OldPasswordBox";
-            this.OldPasswordBox.Size = new System.Drawing.Size(212, 32);
+            this.OldPasswordBox.Size = new System.Drawing.Size(212, 20);
             this.OldPasswordBox.TabIndex = 2;
             this.OldPasswordBox.TextChanged += new System.EventHandler(this.OldPasswordBox_TextChanged);
             // 
@@ -128,7 +128,7 @@
             // 
             this.NewPasswordBox.Location = new System.Drawing.Point(87, 144);
             this.NewPasswordBox.Name = "NewPasswordBox";
-            this.NewPasswordBox.Size = new System.Drawing.Size(212, 32);
+            this.NewPasswordBox.Size = new System.Drawing.Size(212, 20);
             this.NewPasswordBox.TabIndex = 1;
             this.NewPasswordBox.TextChanged += new System.EventHandler(this.NewPasswordBox_TextChanged);
             // 

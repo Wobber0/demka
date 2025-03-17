@@ -14,11 +14,11 @@ namespace Test
     public partial class authorization : Form
     {
         // строка подключения к БД
-        string connStr = "server=localhost;user=root;database=hotelbd;password=root;";
+        string connStr = "server=localhost;user=root;database=atelie;password=root;";
         string login;
         string password;
-        int ban;
-        int auth;
+        int ban = 3;
+        int auth = 1;
         bool schet = true;
 
 
@@ -38,7 +38,7 @@ namespace Test
             // устанавливаем соединение с БД
             conn.Open();
             //создаем запрос обновления параметра бана и аутентификации
-            string query = $"update users SET ban = {ban}, auth = {auth} WHERE login = '{loginBox.Text}';";
+            string query = $"update user SET ban = {ban}, auth = {auth} WHERE login = '{loginBox.Text}';";
             MySqlCommand command = new MySqlCommand(query, conn);
             // выполняем запрос
             command.ExecuteNonQuery();
@@ -60,7 +60,7 @@ namespace Test
             // устанавливаем соединение с БД
             conn.Open();
             // запрос
-            string sql = "SELECT login, password, role, ban, auth FROM users";
+            string sql = "SELECT * FROM user";
             // объект для выполнения SQL-запроса
             MySqlCommand command = new MySqlCommand(sql, conn);
             // объект для чтения ответа сервера
@@ -72,50 +72,69 @@ namespace Test
                 try
                 {
                     //если логин и пароль равны
-                    if (reader[0].ToString() == login && reader[1].ToString() == password)
+                    if (reader["login"].ToString() == login && reader["password"].ToString() == password)
                     {
                         //если аккаунт забанен
-                        if (reader[3].ToString() == "0")
+                        if (reader["ban"].ToString() == "0")
                         {
                             MessageBox.Show("Этот аккаунт был заблокирован за чрезмерное количество неправильных попыток входа!\nОбратитесь к администратору.", "Нарушение!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                         }
                         else //если не забанен
                         { // если роль читается как администратор
-                            if (reader[2].ToString() == "admin")
+                            passwordchange pass = new passwordchange();
+                            switch (reader["role"].ToString())
                             {
-                                AdminWin adm = new AdminWin();
-                                MessageBox.Show("Вы успешно авторизовались, администратор!", "Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                adm.Show();
-                                this.Hide();
-                                return;
-                            }
-                            else //если читается роль пользователя, по желанию можно разнообразить теми же swithc case
-                            {
-                                UserWin userWin = new UserWin();
-                                passwordchange pass = new passwordchange();
-                                MessageBox.Show("Вы успешно авторизовались, пользователь!", "Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                if (reader[4].ToString() == "0") //если это первая аутентификация(парметр равен нулю)
-                                {
-                                    auth = 1;
-                                    pass.Show();
-                                }
-                                else//иначе просто открываем форму
-                                {
-                                    userWin.Show();
-                                }
-                                this.Hide();
-                                return;
+                                case "Администратор":
+                                    AdminWin adm = new AdminWin();
+                                    MessageBox.Show("Вы успешно авторизовались, администратор!", "Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    if (reader["auth"].ToString() == "0") //если это первая аутентификация(парметр равен нулю)
+                                    {
+                                        pass.Show();
+                                    }
+                                    else//иначе просто открываем форму
+                                    {
+                                        adm.Show();
+                                    }
+                                    this.Hide();
+                                    return;
+                                case "Швея":
+                                    seamstressWin steams = new seamstressWin();
+                                    MessageBox.Show("Вы успешно авторизовались", "Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    if (reader["auth"].ToString() == "0") //если это первая аутентификация(парметр равен нулю)
+                                    {
+                                        pass.Show();
+                                    }
+                                    else//иначе просто открываем форму
+                                    {
+                                        steams.Show();
+                                    }
+                                    this.Hide();
+                                    return;
+                                case "Бухгалтер":
+                                    accountantWin accountant = new accountantWin();
+                                    MessageBox.Show("Вы успешно авторизовались", "Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    if (reader["auth"].ToString() == "0") //если это первая аутентификация(парметр равен нулю)
+                                    {
+                                        pass.Show();
+                                    }
+                                    else//иначе просто открываем форму
+                                    {
+                                        accountant.Show();
+                                    }
+                                    this.Hide();
+                                    return;
+
                             }
                         }
                         
                     }
                     //если не равен пароль
-                    else if (reader[0].ToString() == login && reader[1].ToString() != password)
+                    else if (reader["login"].ToString() == login && reader["password"].ToString() != password)
                     {
                         if(schet)//костыль первого совпадения
                         {
-                            ban = Convert.ToInt32(reader[3]);
+                            ban = Convert.ToInt32(reader["ban"]);
                             schet = false;
                         }
                         //уменьшаем параметр бан до собственно самого бана(когда он равен 0)

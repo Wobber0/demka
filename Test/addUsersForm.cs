@@ -13,13 +13,14 @@ namespace Test
 {
     public partial class addUsersForm : Form
     {
+        string connStr = "server=localhost;user=root;database=atelie;password=root;";
         public addUsersForm()
         {
             InitializeComponent();
             roleBox.Items.Clear();
-            MySqlConnection connection = new MySqlConnection("server=localhost;user=root;database=hotelbd;password=root;");
+            MySqlConnection connection = new MySqlConnection(connStr);
             connection.Open();
-            string query = "SELECT * FROM users";
+            string query = "SELECT * FROM user";
             MySqlCommand command = new MySqlCommand(query, connection);
             MySqlDataReader reader = command.ExecuteReader();
             //добалвение вариантов в комбобокс с ролями
@@ -34,26 +35,32 @@ namespace Test
         }
 
         private void ChangePassword_Click(object sender, EventArgs e)
-        { try
+        {
+            try
             {
-                string connStr = "server=localhost;user=root;database=hotelbd;password=root;";
                 // создаём объект для подключения к БД
                 MySqlConnection conn = new MySqlConnection(connStr);
                 // устанавливаем соединение с БД
                 conn.Open();
                 //создаем запрос обновления параметра бана и аутентификации
                 //проблемы с изменеием аутентификации
-                string query = $"insert into users (login, password, role, ban, auth) value ('{loginBox.Text}', '{passwordBox.Text}', '{roleBox.Text}', 3, 0);;";
+                string query = $"insert into user (id, name, salary, login, password, role, ban, auth) value ('{IDBox.Text}', '{FIOBox.Text}', '{payBox.Text}', '{loginBox.Text}', '{passwordBox.Text}', '{roleBox.Text}', 3, 0);";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 // выполняем запрос
                 command.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show("Новый пользватель добавлен!", "База данных пользователей!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.ToString(), "Не получилось добавить нового пользователя!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            IDBox.Clear();
+            FIOBox.Clear();
+            payBox.Clear();
+            loginBox.Clear();
+            passwordBox.Clear();
+            roleBox.Text = "";
         }
     }
 }
