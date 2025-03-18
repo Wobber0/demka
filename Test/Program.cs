@@ -19,4 +19,8 @@ namespace Test
             Application.Run(new authorization());
         }
     }
+    static class usersID
+    {
+        public static string Value { get; set; }
+    }
 }

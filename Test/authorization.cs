@@ -74,6 +74,7 @@ namespace Test
                     //если логин и пароль равны
                     if (reader["login"].ToString() == login && reader["password"].ToString() == password)
                     {
+                        usersID.Value = reader["id"].ToString();
                         //если аккаунт забанен
                         if (reader["ban"].ToString() == "0")
                         {

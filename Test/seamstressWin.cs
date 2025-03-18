@@ -21,11 +21,10 @@ namespace Test
             this.FormClosing += new FormClosingEventHandler(UserWin_FormClosing);
         }
 
-        void ShowClienttInGrid()
+        void ShowClienttInGrid(string query)
         {
             MySqlConnection conn = new MySqlConnection(connectionString);
             conn.Open();
-            string query = "SELECT number_of_rooms_number, status, departure_date FROM status_of_rooms";
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
             DataTable table = new DataTable();
             adapter.Fill(table);
@@ -60,9 +59,35 @@ namespace Test
             panel1.Visible = false;
             UserGridView.Visible = true;
             SaveBut.Visible = true;
+            //List<string> order_id = new List<string>();
             try
             {
-                ShowClienttInGrid();
+                ShowClienttInGrid($@"SELECT 
+                                        o.id AS `Номер_заказа`,
+                                        o.create_date AS `Дата_создания`,
+                                        o.status AS `Статус`,
+                                        o.cost AS `Стоимость`,
+                                        s.name AS `Услуга`,
+                                        GROUP_CONCAT(m.name SEPARATOR ', ') AS `Использованные_материалы`,
+                                        c.name AS `Клиент`
+                                    FROM 
+                                        `order` o
+                                    INNER JOIN 
+                                        `user_has_order` uho ON o.id = uho.order_id
+                                    INNER JOIN 
+                                        `service` s ON o.service_id = s.id
+                                    INNER JOIN 
+                                        `client` c ON o.client_id = c.id
+                                    LEFT JOIN 
+                                        `order_has_material` om ON o.id = om.order_id
+                                    LEFT JOIN 
+                                        `material` m ON om.material_id = m.id
+                                    WHERE 
+                                        uho.user_id = {usersID.Value}
+                                    GROUP BY 
+                                        o.id, o.create_date, o.status, o.cost, s.name, c.name
+                                    ORDER BY 
+                                        o.create_date DESC;");
             }
             catch
             {
