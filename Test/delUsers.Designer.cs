@@ -61,6 +61,7 @@
             this.delete.BackColor = System.Drawing.Color.Bisque;
             this.delete.FlatAppearance.BorderSize = 0;
             this.delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.delete.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.delete.Location = new System.Drawing.Point(258, 35);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(116, 37);

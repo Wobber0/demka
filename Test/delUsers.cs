@@ -39,7 +39,7 @@ namespace Test
             {
                 MySqlConnection conn = new MySqlConnection(connStr);
                 conn.Open();
-                string qu = $"DELETE FROM user WHERE login = '{userBox.Text}'";
+                string qu = $"DELETE FROM user WHERE login = '{userBox.Text}';";
                 MySqlCommand comm = new MySqlCommand(qu, conn);
                 MySqlDataReader read = comm.ExecuteReader();
                 conn.Close();

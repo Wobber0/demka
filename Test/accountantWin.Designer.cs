@@ -49,36 +49,40 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(10, 15, 10, 15);
-            this.menuStrip1.Size = new System.Drawing.Size(646, 49);
+            this.menuStrip1.Size = new System.Drawing.Size(646, 58);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.выходToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(54, 19);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(85, 28);
             this.выходToolStripMenuItem.Text = "Выход";
             this.выходToolStripMenuItem.Click += new System.EventHandler(this.выходToolStripMenuItem_Click);
             // 
             // бДToolStripMenuItem
             // 
+            this.бДToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.бДToolStripMenuItem.Name = "бДToolStripMenuItem";
-            this.бДToolStripMenuItem.Size = new System.Drawing.Size(34, 19);
+            this.бДToolStripMenuItem.Size = new System.Drawing.Size(50, 28);
             this.бДToolStripMenuItem.Text = "БД";
             this.бДToolStripMenuItem.Click += new System.EventHandler(this.бДToolStripMenuItem_Click);
             // 
             // отччетToolStripMenuItem
             // 
+            this.отччетToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.отччетToolStripMenuItem.Name = "отччетToolStripMenuItem";
-            this.отччетToolStripMenuItem.Size = new System.Drawing.Size(117, 19);
+            this.отччетToolStripMenuItem.Size = new System.Drawing.Size(217, 28);
             this.отччетToolStripMenuItem.Text = "Расходы за месяц";
             this.отччетToolStripMenuItem.Click += new System.EventHandler(this.отччетToolStripMenuItem_Click);
             // 
             // хнКрчToolStripMenuItem
             // 
+            this.хнКрчToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.хнКрчToolStripMenuItem.Name = "хнКрчToolStripMenuItem";
-            this.хнКрчToolStripMenuItem.Size = new System.Drawing.Size(126, 19);
+            this.хнКрчToolStripMenuItem.Size = new System.Drawing.Size(236, 28);
             this.хнКрчToolStripMenuItem.Text = "Расход материалов";
             // 
             // dataGridView1

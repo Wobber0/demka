@@ -38,7 +38,7 @@ namespace Test
             connection.Close();
         }
 
-        private void ChangePassword_Click(object sender, EventArgs e)//изменение данных
+        private void ChangeUser_Click(object sender, EventArgs e)//изменение данных
         {
             string user = SelectUserBox.Text;
             MySqlConnection connection = new MySqlConnection(connStr);

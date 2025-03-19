@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Spreadsheet;
+using DocumentFormat.OpenXml.Wordprocessing;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -15,28 +16,57 @@ namespace Test
 {
     public partial class AdminWin : Form
     {
-
+        private MySqlDataAdapter adapter;
+        private DataTable dataTable;
+        string nameT;
         string connectionString = "Server=localhost;Port=3306;Database=atelie;Username=root;Password=root;";//адрес подключения
         public AdminWin()
         {
             InitializeComponent();
-
             this.FormClosing += new FormClosingEventHandler(AdminWin_FormClosing);
         }
 
 
-        void ShowClienttInGrid(string comm)//шаблон показа таблиц
+        private void LoadData(string table)
         {
-            MySqlConnection conn = new MySqlConnection(connectionString);
-            conn.Open();
-            string query = comm;
-            MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            BDGridView.DataSource = table;
-            conn.Close();
+            try
+            {
+                string query = $"SELECT * FROM `{table}`";
+
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    adapter = new MySqlDataAdapter(query, connection);
+                    dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    BDGridView.DataSource = dataTable;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
         }
 
+        public void SaveChanges(string table)
+        {
+            try
+            {
+                string query = $"SELECT * FROM `{table}`";
+                using (MySqlConnection connection = new MySqlConnection(connectionString))
+                {
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
+                    MySqlCommandBuilder commandBuilder = new MySqlCommandBuilder(adapter); // Автогенерация команд
+
+                    DataTable dataTable = (DataTable)BDGridView.DataSource;
+                    adapter.Update(dataTable); // Сохранение изменений
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+        }
         private void AdminWin_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
@@ -50,15 +80,9 @@ namespace Test
         }
         private void seeUsers_Click(object sender, EventArgs e)//показ пользователей
         {
-            try
-            {
-                ShowClienttInGrid("SELECT * FROM user");
+                nameT = "user";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, "user");
                 BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
 
         private void addUsers_Click(object sender, EventArgs e)//открытие окна добавления пользователей
@@ -78,6 +102,50 @@ namespace Test
         {
             updateUsers updateUsers = new updateUsers();
             updateUsers.ShowDialog();
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            authorization AUTH = new authorization();
+            AUTH.Show();
+            this.Hide();
+        }
+
+        private void услугиToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            nameT = "service";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, "service");
+            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+
+        }
+
+        private void платежиToolStripMenuItem_Click(object sender, EventArgs e)
+        {   nameT = "payment";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, "payment");
+            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+        }
+
+        private void MaterialToolStripMenuItem_Click(object sender, EventArgs e)
+        {   nameT = "material";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, "material");
+            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+        }
+
+        private void OrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        {   nameT = "order";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, "order");
+            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+        }
+
+        private void ClientToolStripMenuItem_Click(object sender, EventArgs e)
+        {   nameT = "client";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, "client");
+            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+        }
+
+        private void SaveChanges_Click(object sender, EventArgs e)
+        {
+            DatabaseHelper.SaveChanges(BDGridView, nameT);
         }
     }
     }
