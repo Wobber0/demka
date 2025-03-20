@@ -140,8 +140,8 @@
         private System.Windows.Forms.ToolStripMenuItem информационнаяПанельToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem выходToolStripMenuItem;
         private System.Windows.Forms.DataGridView UserGridView;
+        private System.Windows.Forms.ToolStripMenuItem моиЗадачиToolStripMenuItem;
         private System.Windows.Forms.Label info;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ToolStripMenuItem моиЗадачиToolStripMenuItem;
     }
 }

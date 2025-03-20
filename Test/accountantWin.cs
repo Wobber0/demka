@@ -20,7 +20,7 @@ namespace Test
             this.FormClosing += new FormClosingEventHandler(accountantWin_FormClosing);
         }
 
-        void ShowClienttInGrid(string query)
+        void ShowInGrid(string query)
         {
             MySqlConnection conn = new MySqlConnection(connectionString);
             conn.Open();
@@ -32,7 +32,9 @@ namespace Test
         }
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            authorization AUTH = new authorization();
+            AUTH.Show();
+            this.Hide();
         }
 
         private void accountantWin_FormClosing(object sender, FormClosingEventArgs e)
@@ -44,7 +46,7 @@ namespace Test
         {
             try
             {
-                ShowClienttInGrid(@"WITH 
+                ShowInGrid(@"WITH 
                                     salary_expenses AS (
                                         SELECT SUM(salary) AS total_salary 
                                         FROM user
@@ -68,9 +70,44 @@ namespace Test
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
-        private void бДToolStripMenuItem_Click(object sender, EventArgs e)
+        private void заказыToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            DatabaseHelper.LoadDataIntoGrid(dataGridView1, "order");
+        }
 
+        private void платежиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DatabaseHelper.LoadDataIntoGrid(dataGridView1, "payment");
+        }
+
+        private void материалыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DatabaseHelper.LoadDataIntoGrid(dataGridView1, "material");
+        }
+
+        private void статистикаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ShowInGrid(@"SELECT 
+                                s.name AS 'Название услуги',
+                                COUNT(o.id) AS 'Общее количество заказов',
+                                SUM(o.cost) AS 'Суммарная выручка',
+                                SUM(CASE WHEN o.status = 'Готово' THEN 1 ELSE 0 END) AS 'Завершенные заказы'
+                            FROM 
+                                `order` o
+                            INNER JOIN 
+                                `service` s ON o.service_id = s.id
+                            GROUP BY 
+                                o.service_id, s.name
+                            ORDER BY 
+                                SUM(o.cost) DESC;");
+            }
+            catch
+            { 
+                MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
     }
 }

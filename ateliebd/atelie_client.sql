@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.40, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
 --
--- Host: localhost    Database: hotelbd
+-- Host: 127.0.0.1    Database: atelie
 -- ------------------------------------------------------
--- Server version	8.0.40
+-- Server version	8.0.41
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,28 +16,29 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `number_of_rooms`
+-- Table structure for table `client`
 --
 
-DROP TABLE IF EXISTS `number_of_rooms`;
+DROP TABLE IF EXISTS `client`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `number_of_rooms` (
-  `number` int NOT NULL,
-  `floor` int NOT NULL,
-  `category` varchar(200) NOT NULL,
-  PRIMARY KEY (`number`)
+CREATE TABLE `client` (
+  `id` int NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `phone` varchar(45) NOT NULL,
+  `address` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `number_of_rooms`
+-- Dumping data for table `client`
 --
 
-LOCK TABLES `number_of_rooms` WRITE;
-/*!40000 ALTER TABLE `number_of_rooms` DISABLE KEYS */;
-INSERT INTO `number_of_rooms` VALUES (101,1,'Одноместный стандарт'),(102,1,'Одноместный стандарт'),(103,1,'Одноместный стандарт'),(104,1,'Одноместный стандарт'),(105,1,'Стандарт двухместный с 2 раздельными кроватями'),(106,1,'Стандарт двухместный с 2 раздельными кроватями'),(107,1,'Стандарт двухместный с 2 раздельными кроватями'),(108,1,'Стандарт двухместный с 2 раздельными кроватями'),(109,1,'3-местный бюджет'),(110,1,'3-местный бюджет');
-/*!40000 ALTER TABLE `number_of_rooms` ENABLE KEYS */;
+LOCK TABLES `client` WRITE;
+/*!40000 ALTER TABLE `client` DISABLE KEYS */;
+INSERT INTO `client` VALUES (1,'Иван Иванов','88005553535','ул. Ленина, 10'),(2,'Мария Петрова','89998887766','ул. Пушкина, 5'),(3,'Алексей Сидоров','89213456789','ул. Гагарина, 15'),(4,'Владимир Ушаков','89314766655','ул. 10ЛетОктября. 33');
+/*!40000 ALTER TABLE `client` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-24 14:28:35
+-- Dump completed on 2025-03-19 16:15:37
