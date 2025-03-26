@@ -35,12 +35,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.passwordBox = new System.Windows.Forms.TextBox();
             this.loginBox = new System.Windows.Forms.TextBox();
+            this.shovpbtn = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.Color.SandyBrown;
+            this.groupBox1.Controls.Add(this.shovpbtn);
             this.groupBox1.Controls.Add(this.autorizating);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -97,7 +99,7 @@
             this.passwordBox.Size = new System.Drawing.Size(212, 33);
             this.passwordBox.TabIndex = 2;
             this.passwordBox.UseSystemPasswordChar = true;
-            this.passwordBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.passwordBox_KeyDown_1);
+            this.passwordBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.passwordBox_KeyDown);
             // 
             // loginBox
             // 
@@ -106,6 +108,18 @@
             this.loginBox.Size = new System.Drawing.Size(212, 33);
             this.loginBox.TabIndex = 1;
             this.loginBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.loginBox_KeyDown);
+            // 
+            // shovpbtn
+            // 
+            this.shovpbtn.AutoSize = true;
+            this.shovpbtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.shovpbtn.Location = new System.Drawing.Point(86, 261);
+            this.shovpbtn.Name = "shovpbtn";
+            this.shovpbtn.Size = new System.Drawing.Size(164, 25);
+            this.shovpbtn.TabIndex = 4;
+            this.shovpbtn.Text = "Показать пароль";
+            this.shovpbtn.UseVisualStyleBackColor = true;
+            this.shovpbtn.CheckedChanged += new System.EventHandler(this.shovpbtn_CheckedChanged);
             // 
             // authorization
             // 
@@ -133,5 +147,6 @@
         private System.Windows.Forms.TextBox passwordBox;
         private System.Windows.Forms.TextBox loginBox;
         private System.Windows.Forms.Button autorizating;
+        private System.Windows.Forms.CheckBox shovpbtn;
     }
 }

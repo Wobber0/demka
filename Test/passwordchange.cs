@@ -100,5 +100,34 @@ namespace Test
             // объект для чтения ответа сервера
             MySqlDataReader reader = command.ExecuteReader();
         }
+
+        private void OldPasswordBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                NewPasswordBox.Focus();
+            }
+        }
+
+        private void NewPasswordBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                approvalPasswordBox.Focus();
+            }
+        }
+
+        private void approvalPasswordBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ChangePassword.Focus();
+            }
+        }
+
+        private void ChangePassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            ChangePassword_Click(sender, e);
+        }
     }
 }

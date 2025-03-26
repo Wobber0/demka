@@ -101,7 +101,7 @@ namespace Test
                                     return;
                                 case "Швея":
                                     seamstressWin steams = new seamstressWin();
-                                    MessageBox.Show("Вы успешно авторизовались", "Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show("Вы успешно авторизовались.", "Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     if (reader["auth"].ToString() == "0") //если это первая аутентификация(парметр равен нулю)
                                     {
                                         pass.Show();
@@ -171,11 +171,24 @@ namespace Test
                 passwordBox.Focus();
             }
         }
-        private void passwordBox_KeyDown_1(object sender, KeyEventArgs e)
+        private void passwordBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 autorizating.Focus();
+            }
+        }
+
+        private void shovpbtn_CheckedChanged(object sender, EventArgs e)
+        {
+            CheckBox checkBox = (CheckBox)sender; // приводим отправителя к элементу типа CheckBox
+            if (checkBox.Checked == true)
+            {
+                passwordBox.UseSystemPasswordChar = false;
+            }
+            else
+            {
+                passwordBox.UseSystemPasswordChar = true;
             }
         }
     }

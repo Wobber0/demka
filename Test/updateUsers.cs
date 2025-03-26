@@ -43,7 +43,7 @@ namespace Test
             string user = SelectUserBox.Text;
             MySqlConnection connection = new MySqlConnection(connStr);
             connection.Open();
-            string sql = $"UPDATE user SET password = '{passwordBox.Text}', role = '{roleBox.Text}', ban = '{ban}', id = '{IDBox.Text}', login = '{SelectUserBox.Text}', name = '{FIOBox.Text}', salary = '{payBox.Text}', WHERE login = '{user}';";
+            string sql = $"UPDATE user SET password = '{passwordBox.Text}', role = '{roleBox.Text}', ban = '{ban}', id = '{IDBox.Text}', login = '{SelectUserBox.Text}', name = '{FIOBox.Text}', salary = '{payBox.Text}' WHERE login = '{user}';";
             MySqlCommand command = new MySqlCommand(sql, connection);
             MySqlDataReader reader = command.ExecuteReader();
             connection.Close();

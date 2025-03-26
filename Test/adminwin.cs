@@ -115,32 +115,27 @@ namespace Test
         {
             nameT = "service";
             DatabaseHelper.LoadDataIntoGrid(BDGridView, "service");
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
         }
 
         private void платежиToolStripMenuItem_Click(object sender, EventArgs e)
         {   nameT = "payment";
             DatabaseHelper.LoadDataIntoGrid(BDGridView, "payment");
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
         private void MaterialToolStripMenuItem_Click(object sender, EventArgs e)
         {   nameT = "material";
             DatabaseHelper.LoadDataIntoGrid(BDGridView, "material");
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
         private void OrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {   nameT = "order";
             DatabaseHelper.LoadDataIntoGrid(BDGridView, "order");
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
         private void ClientToolStripMenuItem_Click(object sender, EventArgs e)
         {   nameT = "client";
             DatabaseHelper.LoadDataIntoGrid(BDGridView, "client");
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
         private void SaveChanges_Click(object sender, EventArgs e)

@@ -86,6 +86,7 @@
             this.UserGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.UserGridView.Location = new System.Drawing.Point(40, 91);
             this.UserGridView.Name = "UserGridView";
+            this.UserGridView.ReadOnly = true;
             this.UserGridView.Size = new System.Drawing.Size(571, 316);
             this.UserGridView.TabIndex = 1;
             this.UserGridView.Visible = false;

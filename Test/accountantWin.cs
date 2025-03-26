@@ -93,7 +93,9 @@ namespace Test
                                 s.name AS 'Название услуги',
                                 COUNT(o.id) AS 'Общее количество заказов',
                                 SUM(o.cost) AS 'Суммарная выручка',
-                                SUM(CASE WHEN o.status = 'Готово' THEN 1 ELSE 0 END) AS 'Завершенные заказы'
+                                SUM(CASE WHEN o.status = 'Готово' THEN 1 ELSE 0 END) AS 'Завершенные заказы',
+                                SUM(CASE WHEN o.status = 'Отменено' THEN 1 ELSE 0 END) AS 'Отмененные заказы'
+
                             FROM 
                                 `order` o
                             INNER JOIN 
