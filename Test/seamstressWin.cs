@@ -61,12 +61,11 @@ namespace Test
             try
             {
                 ShowClienttInGrid($@"SELECT 
-                                        o.id AS `Номер_заказа`,
-                                        o.create_date AS `Дата_создания`,
+                                        o.id AS `Номер заказа`,
+                                        o.create_date AS `Дата создания`,
                                         o.status AS `Статус`,
-                                        o.cost AS `Стоимость`,
                                         s.name AS `Услуга`,
-                                        GROUP_CONCAT(m.name SEPARATOR ', ') AS `Использованные_материалы`,
+                                        GROUP_CONCAT(m.name SEPARATOR ', ') AS `Материалы`,
                                         c.name AS `Клиент`
                                     FROM 
                                         `order` o
@@ -91,7 +90,6 @@ namespace Test
             {
                 MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            UserGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
     }
 }

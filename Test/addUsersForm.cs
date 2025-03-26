@@ -20,16 +20,14 @@ namespace Test
             roleBox.Items.Clear();
             MySqlConnection connection = new MySqlConnection(connStr);
             connection.Open();
-            string query = "SELECT * FROM user";
+            string query = "select distinct role from user";
             MySqlCommand command = new MySqlCommand(query, connection);
             MySqlDataReader reader = command.ExecuteReader();
             //добалвение вариантов в комбобокс с ролями
             while (reader.Read())
             {
-                if (!roleBox.Items.Contains(reader["role"].ToString()))
-                {
-                    roleBox.Items.Add(reader["role"].ToString());
-                }
+                
+                    roleBox.Items.Add(reader[0].ToString());
             }
             connection.Close();
         }

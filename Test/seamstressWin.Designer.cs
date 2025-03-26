@@ -68,8 +68,8 @@
             this.информационнаяПанельToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.информационнаяПанельToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.информационнаяПанельToolStripMenuItem.Name = "информационнаяПанельToolStripMenuItem";
-            this.информационнаяПанельToolStripMenuItem.Size = new System.Drawing.Size(170, 28);
-            this.информационнаяПанельToolStripMenuItem.Text = "Информация";
+            this.информационнаяПанельToolStripMenuItem.Size = new System.Drawing.Size(110, 28);
+            this.информационнаяПанельToolStripMenuItem.Text = "Памятка";
             this.информационнаяПанельToolStripMenuItem.Click += new System.EventHandler(this.InfoMenuItem_Click);
             // 
             // выходToolStripMenuItem
@@ -83,12 +83,15 @@
             // 
             // UserGridView
             // 
+            this.UserGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.UserGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.UserGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.UserGridView.Location = new System.Drawing.Point(40, 91);
+            this.UserGridView.Location = new System.Drawing.Point(12, 91);
             this.UserGridView.Name = "UserGridView";
-            this.UserGridView.Size = new System.Drawing.Size(571, 316);
+            this.UserGridView.ReadOnly = true;
+            this.UserGridView.RowHeadersVisible = false;
+            this.UserGridView.Size = new System.Drawing.Size(622, 402);
             this.UserGridView.TabIndex = 1;
-            this.UserGridView.Visible = false;
             // 
             // info
             // 
@@ -105,7 +108,7 @@
             this.panel1.Controls.Add(this.info);
             this.panel1.Location = new System.Drawing.Point(12, 91);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(634, 450);
+            this.panel1.Size = new System.Drawing.Size(634, 402);
             this.panel1.TabIndex = 4;
             // 
             // seamstressWin
@@ -114,10 +117,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(646, 584);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(646, 523);
             this.Controls.Add(this.UserGridView);
             this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;

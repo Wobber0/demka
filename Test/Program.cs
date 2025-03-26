@@ -66,7 +66,6 @@ namespace Test
                         string query = $"SELECT * FROM `{tableName}`";
                         var adapter = new MySqlDataAdapter(query, connection);
                         var commandBuilder = new MySqlCommandBuilder(adapter);
-
                         adapter.Update(dataTable);
                         ShowInfo("Данные успешно сохранены!");
                     }

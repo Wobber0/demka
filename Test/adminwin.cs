@@ -26,47 +26,6 @@ namespace Test
             this.FormClosing += new FormClosingEventHandler(AdminWin_FormClosing);
         }
 
-
-        private void LoadData(string table)
-        {
-            try
-            {
-                string query = $"SELECT * FROM `{table}`";
-
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                {
-                    adapter = new MySqlDataAdapter(query, connection);
-                    dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-                    BDGridView.DataSource = dataTable;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка: {ex.Message}");
-            }
-        }
-
-        public void SaveChanges(string table)
-        {
-            try
-            {
-                string query = $"SELECT * FROM `{table}`";
-                using (MySqlConnection connection = new MySqlConnection(connectionString))
-                {
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, connection);
-                    MySqlCommandBuilder commandBuilder = new MySqlCommandBuilder(adapter); // Автогенерация команд
-
-                    DataTable dataTable = (DataTable)BDGridView.DataSource;
-                    adapter.Update(dataTable); // Сохранение изменений
-
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ошибка: {ex.Message}");
-            }
-        }
         private void AdminWin_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
@@ -80,9 +39,8 @@ namespace Test
         }
         private void seeUsers_Click(object sender, EventArgs e)//показ пользователей
         {
-                nameT = "user";
+            nameT = "user";
             DatabaseHelper.LoadDataIntoGrid(BDGridView, "user");
-                BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
         private void addUsers_Click(object sender, EventArgs e)//открытие окна добавления пользователей
@@ -115,37 +73,44 @@ namespace Test
         {
             nameT = "service";
             DatabaseHelper.LoadDataIntoGrid(BDGridView, "service");
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
 
         }
 
         private void платежиToolStripMenuItem_Click(object sender, EventArgs e)
         {   nameT = "payment";
             DatabaseHelper.LoadDataIntoGrid(BDGridView, "payment");
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
         private void MaterialToolStripMenuItem_Click(object sender, EventArgs e)
         {   nameT = "material";
             DatabaseHelper.LoadDataIntoGrid(BDGridView, "material");
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
         private void OrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {   nameT = "order";
             DatabaseHelper.LoadDataIntoGrid(BDGridView, "order");
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
         private void ClientToolStripMenuItem_Click(object sender, EventArgs e)
         {   nameT = "client";
             DatabaseHelper.LoadDataIntoGrid(BDGridView, "client");
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
         }
 
         private void SaveChanges_Click(object sender, EventArgs e)
         {
             DatabaseHelper.SaveChanges(BDGridView, nameT);
+        }
+
+        private void материалыЗаказовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nameT = "order_has_material";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
+        }
+
+        private void заказыПользователейToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nameT = "user_has_order";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
         }
     }
     }

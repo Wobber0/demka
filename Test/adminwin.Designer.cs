@@ -42,8 +42,9 @@
             this.удалитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BDGridView = new System.Windows.Forms.DataGridView();
-            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.save = new System.Windows.Forms.Button();
+            this.материалыЗаказовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.заказыПользователейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BDGridView)).BeginInit();
             this.SuspendLayout();
@@ -78,7 +79,9 @@
             this.MaterialToolStripMenuItem,
             this.OrdersToolStripMenuItem,
             this.услугиToolStripMenuItem1,
-            this.платежиToolStripMenuItem});
+            this.платежиToolStripMenuItem,
+            this.материалыЗаказовToolStripMenuItem,
+            this.заказыПользователейToolStripMenuItem});
             this.новыйПользовательToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.новыйПользовательToolStripMenuItem.Name = "новыйПользовательToolStripMenuItem";
             this.новыйПользовательToolStripMenuItem.Size = new System.Drawing.Size(111, 28);
@@ -161,6 +164,8 @@
             // 
             // BDGridView
             // 
+            this.BDGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.BDGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.BDGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BDGridView.Location = new System.Drawing.Point(81, 97);
             this.BDGridView.Name = "BDGridView";
@@ -180,6 +185,20 @@
             this.save.Text = "Сохранить изменения";
             this.save.UseVisualStyleBackColor = false;
             this.save.Click += new System.EventHandler(this.SaveChanges_Click);
+            // 
+            // материалыЗаказовToolStripMenuItem
+            // 
+            this.материалыЗаказовToolStripMenuItem.Name = "материалыЗаказовToolStripMenuItem";
+            this.материалыЗаказовToolStripMenuItem.Size = new System.Drawing.Size(317, 28);
+            this.материалыЗаказовToolStripMenuItem.Text = "Материалы заказов";
+            this.материалыЗаказовToolStripMenuItem.Click += new System.EventHandler(this.материалыЗаказовToolStripMenuItem_Click);
+            // 
+            // заказыПользователейToolStripMenuItem
+            // 
+            this.заказыПользователейToolStripMenuItem.Name = "заказыПользователейToolStripMenuItem";
+            this.заказыПользователейToolStripMenuItem.Size = new System.Drawing.Size(317, 28);
+            this.заказыПользователейToolStripMenuItem.Text = "Заказы пользователей";
+            this.заказыПользователейToolStripMenuItem.Click += new System.EventHandler(this.заказыПользователейToolStripMenuItem_Click);
             // 
             // AdminWin
             // 
@@ -210,7 +229,6 @@
         private System.Windows.Forms.ToolStripMenuItem MaterialToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem OrdersToolStripMenuItem;
         private System.Windows.Forms.DataGridView BDGridView;
-        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem пользователиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem показатьToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
@@ -219,5 +237,7 @@
         private System.Windows.Forms.ToolStripMenuItem услугиToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem платежиToolStripMenuItem;
         private System.Windows.Forms.Button save;
+        private System.Windows.Forms.ToolStripMenuItem материалыЗаказовToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem заказыПользователейToolStripMenuItem;
     }
 }

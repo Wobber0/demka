@@ -87,6 +87,7 @@
             this.approvalPasswordBox.TabIndex = 4;
             this.approvalPasswordBox.UseSystemPasswordChar = true;
             this.approvalPasswordBox.TextChanged += new System.EventHandler(this.approvalPasswordBox_TextChanged);
+            this.approvalPasswordBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.approvalPasswordBox_KeyDown);
             // 
             // ChangePassword
             // 
@@ -101,6 +102,7 @@
             this.ChangePassword.Text = "Изменить";
             this.ChangePassword.UseVisualStyleBackColor = false;
             this.ChangePassword.Click += new System.EventHandler(this.ChangePassword_Click);
+            this.ChangePassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ChangePassword_KeyDown);
             // 
             // label3
             // 
@@ -127,9 +129,10 @@
             this.OldPasswordBox.Location = new System.Drawing.Point(86, 77);
             this.OldPasswordBox.Name = "OldPasswordBox";
             this.OldPasswordBox.Size = new System.Drawing.Size(212, 27);
-            this.OldPasswordBox.TabIndex = 2;
+            this.OldPasswordBox.TabIndex = 0;
             this.OldPasswordBox.UseSystemPasswordChar = true;
             this.OldPasswordBox.TextChanged += new System.EventHandler(this.OldPasswordBox_TextChanged);
+            this.OldPasswordBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OldPasswordBox_KeyDown);
             // 
             // NewPasswordBox
             // 
@@ -138,6 +141,7 @@
             this.NewPasswordBox.Size = new System.Drawing.Size(212, 27);
             this.NewPasswordBox.TabIndex = 1;
             this.NewPasswordBox.TextChanged += new System.EventHandler(this.NewPasswordBox_TextChanged);
+            this.NewPasswordBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NewPasswordBox_KeyDown);
             // 
             // passwordchange
             // 
