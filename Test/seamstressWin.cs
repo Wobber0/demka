@@ -57,7 +57,6 @@ namespace Test
         {
             panel1.Visible = false;
             UserGridView.Visible = true;
-            //List<string> order_id = new List<string>();
             try
             {
                 ShowClienttInGrid($@"SELECT 
