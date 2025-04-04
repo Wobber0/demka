@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(delUsers));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.userBox = new System.Windows.Forms.ComboBox();
             this.delete = new System.Windows.Forms.Button();
@@ -40,18 +41,20 @@
             this.groupBox1.Controls.Add(this.userBox);
             this.groupBox1.Controls.Add(this.delete);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.groupBox1.Location = new System.Drawing.Point(27, 23);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(380, 113);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Удаление пользователя:";
             // 
             // userBox
             // 
             this.userBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.userBox.FormattingEnabled = true;
-            this.userBox.Location = new System.Drawing.Point(6, 42);
+            this.userBox.Location = new System.Drawing.Point(6, 53);
             this.userBox.Name = "userBox";
             this.userBox.Size = new System.Drawing.Size(246, 24);
             this.userBox.TabIndex = 2;
@@ -62,7 +65,7 @@
             this.delete.FlatAppearance.BorderSize = 0;
             this.delete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.delete.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.delete.Location = new System.Drawing.Point(258, 35);
+            this.delete.Location = new System.Drawing.Point(258, 46);
             this.delete.Name = "delete";
             this.delete.Size = new System.Drawing.Size(116, 37);
             this.delete.TabIndex = 3;
@@ -76,9 +79,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(430, 163);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "delUsers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Удаление пользователей";
+            this.Text = "Ashy Horizon";
             this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 

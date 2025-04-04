@@ -86,9 +86,9 @@
             this.UserGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.UserGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.UserGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.UserGridView.Location = new System.Drawing.Point(12, 91);
+            this.UserGridView.Location = new System.Drawing.Point(28, 3);
             this.UserGridView.Name = "UserGridView";
-            this.UserGridView.Size = new System.Drawing.Size(571, 316);
+            this.UserGridView.Size = new System.Drawing.Size(571, 372);
             this.UserGridView.TabIndex = 1;
             // 
             // info
@@ -103,6 +103,7 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
+            this.panel1.Controls.Add(this.UserGridView);
             this.panel1.Controls.Add(this.info);
             this.panel1.Location = new System.Drawing.Point(12, 91);
             this.panel1.Name = "panel1";
@@ -116,7 +117,6 @@
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(646, 523);
-            this.Controls.Add(this.UserGridView);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -124,7 +124,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "seamstressWin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Главное меню";
+            this.Text = "Ashy Horizon";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.UserGridView)).EndInit();

@@ -114,7 +114,7 @@ namespace Test
                                     return;
                                 case "Бухгалтер":
                                     accountantWin accountant = new accountantWin();
-                                    MessageBox.Show("Вы успешно авторизовались", "Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    MessageBox.Show("Вы успешно авторизовались.", "Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     if (reader["auth"].ToString() == "0") //если это первая аутентификация(парметр равен нулю)
                                     {
                                         pass.Show();

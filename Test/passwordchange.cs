@@ -44,7 +44,7 @@ namespace Test
                 // читаем результат
                 while (reader.Read())
                 {
-                    if (oldP == reader["password"].ToString())
+                    if (oldP == reader["password"].ToString() && usersID.Value == reader["id"].ToString())
                     {
                         switch(reader["role"].ToString())
                         {
@@ -94,7 +94,7 @@ namespace Test
             // устанавливаем соединение с БД
             conn.Open();
             // запрос
-            string sql = $"UPDATE user SET password = '{NewPasswordBox.Text}' WHERE password = '{OldPasswordBox.Text}';";
+            string sql = $"UPDATE user SET password = '{NewPasswordBox.Text}' WHERE id = '{usersID.Value}';";
             // объект для выполнения SQL-запроса
             MySqlCommand command = new MySqlCommand(sql, conn);
             // объект для чтения ответа сервера

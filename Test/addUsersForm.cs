@@ -42,7 +42,7 @@ namespace Test
                 conn.Open();
                 //создаем запрос обновления параметра бана и аутентификации
                 //проблемы с изменеием аутентификации
-                string query = $"insert into user (id, name, salary, login, password, role, ban, auth) value ('{IDBox.Text}', '{FIOBox.Text}', '{payBox.Text}', '{loginBox.Text}', '{passwordBox.Text}', '{roleBox.Text}', 3, 0);";
+                string query = $"insert into user (name, salary, login, password, role, ban, auth) value ('{FIOBox.Text}', '{payBox.Text}', '{loginBox.Text}', '{passwordBox.Text}', '{roleBox.Text}', 3, 0);";
                 MySqlCommand command = new MySqlCommand(query, conn);
                 // выполняем запрос
                 command.ExecuteNonQuery();
@@ -53,7 +53,6 @@ namespace Test
             {
                 MessageBox.Show(ex.ToString(), "Не получилось добавить нового пользователя!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            IDBox.Clear();
             FIOBox.Clear();
             payBox.Clear();
             loginBox.Clear();

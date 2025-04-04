@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminWin));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.выходToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.новыйПользовательToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -36,6 +37,8 @@
             this.OrdersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.услугиToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.платежиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.материалыЗаказовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.заказыПользователейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.показатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -43,8 +46,6 @@
             this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BDGridView = new System.Windows.Forms.DataGridView();
             this.save = new System.Windows.Forms.Button();
-            this.материалыЗаказовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.заказыПользователейToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BDGridView)).BeginInit();
             this.SuspendLayout();
@@ -90,37 +91,51 @@
             // новыйЗаказToolStripMenuItem
             // 
             this.новыйЗаказToolStripMenuItem.Name = "новыйЗаказToolStripMenuItem";
-            this.новыйЗаказToolStripMenuItem.Size = new System.Drawing.Size(202, 28);
+            this.новыйЗаказToolStripMenuItem.Size = new System.Drawing.Size(317, 28);
             this.новыйЗаказToolStripMenuItem.Text = "Клиенты";
             this.новыйЗаказToolStripMenuItem.Click += new System.EventHandler(this.ClientToolStripMenuItem_Click);
             // 
             // MaterialToolStripMenuItem
             // 
             this.MaterialToolStripMenuItem.Name = "MaterialToolStripMenuItem";
-            this.MaterialToolStripMenuItem.Size = new System.Drawing.Size(202, 28);
+            this.MaterialToolStripMenuItem.Size = new System.Drawing.Size(317, 28);
             this.MaterialToolStripMenuItem.Text = "Материалы";
             this.MaterialToolStripMenuItem.Click += new System.EventHandler(this.MaterialToolStripMenuItem_Click);
             // 
             // OrdersToolStripMenuItem
             // 
             this.OrdersToolStripMenuItem.Name = "OrdersToolStripMenuItem";
-            this.OrdersToolStripMenuItem.Size = new System.Drawing.Size(202, 28);
+            this.OrdersToolStripMenuItem.Size = new System.Drawing.Size(317, 28);
             this.OrdersToolStripMenuItem.Text = "Заказы";
             this.OrdersToolStripMenuItem.Click += new System.EventHandler(this.OrdersToolStripMenuItem_Click);
             // 
             // услугиToolStripMenuItem1
             // 
             this.услугиToolStripMenuItem1.Name = "услугиToolStripMenuItem1";
-            this.услугиToolStripMenuItem1.Size = new System.Drawing.Size(202, 28);
+            this.услугиToolStripMenuItem1.Size = new System.Drawing.Size(317, 28);
             this.услугиToolStripMenuItem1.Text = "Услуги";
             this.услугиToolStripMenuItem1.Click += new System.EventHandler(this.услугиToolStripMenuItem1_Click);
             // 
             // платежиToolStripMenuItem
             // 
             this.платежиToolStripMenuItem.Name = "платежиToolStripMenuItem";
-            this.платежиToolStripMenuItem.Size = new System.Drawing.Size(202, 28);
+            this.платежиToolStripMenuItem.Size = new System.Drawing.Size(317, 28);
             this.платежиToolStripMenuItem.Text = "Платежи";
             this.платежиToolStripMenuItem.Click += new System.EventHandler(this.платежиToolStripMenuItem_Click);
+            // 
+            // материалыЗаказовToolStripMenuItem
+            // 
+            this.материалыЗаказовToolStripMenuItem.Name = "материалыЗаказовToolStripMenuItem";
+            this.материалыЗаказовToolStripMenuItem.Size = new System.Drawing.Size(317, 28);
+            this.материалыЗаказовToolStripMenuItem.Text = "Материалы заказов";
+            this.материалыЗаказовToolStripMenuItem.Click += new System.EventHandler(this.материалыЗаказовToolStripMenuItem_Click);
+            // 
+            // заказыПользователейToolStripMenuItem
+            // 
+            this.заказыПользователейToolStripMenuItem.Name = "заказыПользователейToolStripMenuItem";
+            this.заказыПользователейToolStripMenuItem.Size = new System.Drawing.Size(317, 28);
+            this.заказыПользователейToolStripMenuItem.Text = "Заказы пользователей";
+            this.заказыПользователейToolStripMenuItem.Click += new System.EventHandler(this.заказыПользователейToolStripMenuItem_Click);
             // 
             // пользователиToolStripMenuItem
             // 
@@ -169,7 +184,6 @@
             this.BDGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.BDGridView.Location = new System.Drawing.Point(81, 97);
             this.BDGridView.Name = "BDGridView";
-            this.BDGridView.RowHeadersVisible = false;
             this.BDGridView.Size = new System.Drawing.Size(622, 362);
             this.BDGridView.TabIndex = 2;
             // 
@@ -187,20 +201,6 @@
             this.save.UseVisualStyleBackColor = false;
             this.save.Click += new System.EventHandler(this.SaveChanges_Click);
             // 
-            // материалыЗаказовToolStripMenuItem
-            // 
-            this.материалыЗаказовToolStripMenuItem.Name = "материалыЗаказовToolStripMenuItem";
-            this.материалыЗаказовToolStripMenuItem.Size = new System.Drawing.Size(317, 28);
-            this.материалыЗаказовToolStripMenuItem.Text = "Материалы заказов";
-            this.материалыЗаказовToolStripMenuItem.Click += new System.EventHandler(this.материалыЗаказовToolStripMenuItem_Click);
-            // 
-            // заказыПользователейToolStripMenuItem
-            // 
-            this.заказыПользователейToolStripMenuItem.Name = "заказыПользователейToolStripMenuItem";
-            this.заказыПользователейToolStripMenuItem.Size = new System.Drawing.Size(317, 28);
-            this.заказыПользователейToolStripMenuItem.Text = "Заказы пользователей";
-            this.заказыПользователейToolStripMenuItem.Click += new System.EventHandler(this.заказыПользователейToolStripMenuItem_Click);
-            // 
             // AdminWin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -209,9 +209,10 @@
             this.Controls.Add(this.save);
             this.Controls.Add(this.BDGridView);
             this.Controls.Add(this.menuStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "AdminWin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Главное меню";
+            this.Text = "Ashy Horizon";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AdminWin_FormClosing);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

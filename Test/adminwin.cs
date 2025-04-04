@@ -16,10 +16,7 @@ namespace Test
 {
     public partial class AdminWin : Form
     {
-        private MySqlDataAdapter adapter;
-        private DataTable dataTable;
         string nameT;
-        string connectionString = "Server=localhost;Port=3306;Database=atelie;Username=root;Password=root;";//адрес подключения
         public AdminWin()
         {
             InitializeComponent();

@@ -18,10 +18,27 @@ namespace Test
         {
             InitializeComponent();
             this.FormClosing += new FormClosingEventHandler(accountantWin_FormClosing);
+            ShowInGrid(@"SELECT 
+                                s.name AS 'Название услуги',
+                                COUNT(o.id) AS 'Общее количество заказов',
+                                SUM(o.cost) AS 'Суммарная выручка',
+                                SUM(CASE WHEN o.status = 'Готово' THEN 1 ELSE 0 END) AS 'Завершенные заказы',
+                                SUM(CASE WHEN o.status = 'Отменено' THEN 1 ELSE 0 END) AS 'Отмененные заказы'
+
+                            FROM 
+                                `order` o
+                            INNER JOIN 
+                                `service` s ON o.service_id = s.id
+                            GROUP BY 
+                                o.service_id, s.name
+                            ORDER BY 
+                                SUM(o.cost) DESC;");
         }
 
         void ShowInGrid(string query)
         {
+            try
+            {
             MySqlConnection conn = new MySqlConnection(connectionString);
             conn.Open();
             MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
@@ -29,6 +46,8 @@ namespace Test
             adapter.Fill(table);
             dataGridView1.DataSource = table;
             conn.Close();
+            }
+            catch { MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -44,30 +63,23 @@ namespace Test
 
         private void отччетToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
                 ShowInGrid(@"WITH 
-                                    salary_expenses AS (
-                                        SELECT SUM(salary) AS total_salary 
-                                        FROM user
-                                    ),
-                                    material_expenses AS (
-                                        SELECT SUM(m.price_unit) AS total_materials 
-                                        FROM material o
-                                        INNER JOIN order_has_material om ON o.id = om.order_id
-                                        INNER JOIN material m ON om.material_id = m.id
-                                    )
-                                    SELECT 
-                                        s.total_salary AS 'Расходы на зарплаты',
-                                        m.total_materials AS 'Расходы на материалы',
-                                        s.total_salary + m.total_materials AS 'Общие расходы'
-                                    FROM salary_expenses s, material_expenses m;");
-            }
-            catch
-            {
-                MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            
+                               salary_expenses AS (
+                             SELECT SUM(salary) AS total_salary 
+                             FROM user
+                             ),
+                               material_expenses AS (
+                             SELECT SUM(m.price_unit) AS total_materials 
+                             FROM material o
+                             INNER JOIN order_has_material om ON o.id = om.order_id
+                             INNER JOIN material m ON om.material_id = m.id
+                             )
+                             SELECT 
+                               s.total_salary AS 'Расходы на зарплаты',
+                               m.total_materials AS 'Расходы на материалы',
+                               s.total_salary + m.total_materials AS 'Общие расходы'
+                             FROM salary_expenses s, material_expenses m;");
+                MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);            
         }
 
         private void заказыToolStripMenuItem_Click(object sender, EventArgs e)
@@ -87,8 +99,6 @@ namespace Test
 
         private void статистикаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
-            {
                 ShowInGrid(@"SELECT 
                                 s.name AS 'Название услуги',
                                 COUNT(o.id) AS 'Общее количество заказов',
@@ -104,12 +114,8 @@ namespace Test
                                 o.service_id, s.name
                             ORDER BY 
                                 SUM(o.cost) DESC;");
-            }
-            catch
-            { 
                 MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            
+         
         }
     }
 }

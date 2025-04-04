@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(passwordchange));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.warningLbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -59,7 +60,7 @@
             this.groupBox1.Size = new System.Drawing.Size(404, 357);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Измените выданный пароль:";
+            this.groupBox1.Text = "Изменение пароля";
             // 
             // warningLbl
             // 
@@ -149,9 +150,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(545, 443);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "passwordchange";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "passwordchange";
+            this.Text = "Ashy Horizon";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.passwordchange_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

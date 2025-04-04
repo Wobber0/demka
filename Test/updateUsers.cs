@@ -40,14 +40,22 @@ namespace Test
 
         private void ChangeUser_Click(object sender, EventArgs e)//изменение данных
         {
-            string user = SelectUserBox.Text;
-            MySqlConnection connection = new MySqlConnection(connStr);
-            connection.Open();
-            string sql = $"UPDATE user SET password = '{passwordBox.Text}', role = '{roleBox.Text}', ban = '{ban}', id = '{IDBox.Text}', login = '{SelectUserBox.Text}', name = '{FIOBox.Text}', salary = '{payBox.Text}' WHERE login = '{user}';";
-            MySqlCommand command = new MySqlCommand(sql, connection);
-            MySqlDataReader reader = command.ExecuteReader();
-            connection.Close();
-            MessageBox.Show("Информация пользователя обновлена!", "База данных пользователей!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                string user = SelectUserBox.Text;
+                MySqlConnection connection = new MySqlConnection(connStr);
+                connection.Open();
+                string sql = $"UPDATE user SET password = '{passwordBox.Text}', role = '{roleBox.Text}', ban = '{ban}', id = '{IDBox.Text}', login = '{SelectUserBox.Text}', name = '{FIOBox.Text}', salary = '{payBox.Text}' WHERE login = '{user}';";
+                MySqlCommand command = new MySqlCommand(sql, connection);
+                MySqlDataReader reader = command.ExecuteReader();
+                connection.Close();
+                MessageBox.Show("Информация пользователя обновлена!", "База данных пользователей.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("Не получилось обновить информацию пользователя!\n" + ex.ToString(), "База данных пользователей.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
         }
 
         private void SelectUserBox_SelectedIndexChanged(object sender, EventArgs e)//заполнение полей при выборе логина
