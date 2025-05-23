@@ -37,7 +37,7 @@ namespace Test
         private void seeUsers_Click(object sender, EventArgs e)//показ пользователей
         {
             nameT = "user";
-            DatabaseHelper.LoadDataIntoGrid(BDGridView, "user");
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
         }
 
         private void addUsers_Click(object sender, EventArgs e)//открытие окна добавления пользователей
@@ -61,36 +61,50 @@ namespace Test
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            authorization AUTH = new authorization();
-            AUTH.Show();
-            this.Hide();
+            // Создаем форму подтверждения
+            ConfExitWin confirmForm = new ConfExitWin();
+            DialogResult result = confirmForm.ShowDialog();
+
+            if (result == DialogResult.Yes)
+            {
+                // Закрываем текущую форму и открываем авторизацию
+                this.Hide();
+                authorization Form = new authorization();
+                Form.Show();
+            }
+            else
+            {
+                // Просто закрываем диалог, основная форма остается
+                confirmForm.Close();
+            }
         }
 
         private void услугиToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             nameT = "service";
-            DatabaseHelper.LoadDataIntoGrid(BDGridView, "service");
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
 
         }
 
         private void платежиToolStripMenuItem_Click(object sender, EventArgs e)
         {   nameT = "payment";
-            DatabaseHelper.LoadDataIntoGrid(BDGridView, "payment");
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
         }
 
         private void MaterialToolStripMenuItem_Click(object sender, EventArgs e)
         {   nameT = "material";
-            DatabaseHelper.LoadDataIntoGrid(BDGridView, "material");
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
         }
 
         private void OrdersToolStripMenuItem_Click(object sender, EventArgs e)
         {   nameT = "order";
-            DatabaseHelper.LoadDataIntoGrid(BDGridView, "order");
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
         }
 
         private void ClientToolStripMenuItem_Click(object sender, EventArgs e)
         {   nameT = "client";
-            DatabaseHelper.LoadDataIntoGrid(BDGridView, "client");
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
         }
 
         private void SaveChanges_Click(object sender, EventArgs e)
@@ -107,6 +121,12 @@ namespace Test
         private void заказыПользователейToolStripMenuItem_Click(object sender, EventArgs e)
         {
             nameT = "user_has_order";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
+        }
+
+        private void меркиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nameT = "measurements";
             DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
         }
     }

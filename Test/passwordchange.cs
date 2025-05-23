@@ -25,48 +25,56 @@ namespace Test
         string connStr = "server=localhost;user=root;database=atelie;password=root;";
         private void ChangePassword_Click(object sender, EventArgs e)
         {
-            if(newP == appP)
+            try
             {
-                AdminWin admin = new AdminWin();
-                seamstressWin streams = new seamstressWin();
-                accountantWin accountant = new accountantWin();
-                // строка подключения к БД
-                // создаём объект для подключения к БД
-                MySqlConnection conn = new MySqlConnection(connStr);
-                // устанавливаем соединение с БД
-                conn.Open();
-                // запрос
-                string sql = "SELECT * FROM user";
-                // объект для выполнения SQL-запроса
-                MySqlCommand command = new MySqlCommand(sql, conn);
-                // объект для чтения ответа сервера
-                MySqlDataReader reader = command.ExecuteReader();
-                // читаем результат
-                while (reader.Read())
+                if (newP == appP)
                 {
-                    if (oldP == reader["password"].ToString() && usersID.Value == reader["id"].ToString())
+                    AdminWin admin = new AdminWin();
+                    seamstressWin streams = new seamstressWin();
+                    accountantWin accountant = new accountantWin();
+                    // строка подключения к БД
+                    // создаём объект для подключения к БД
+                    MySqlConnection conn = new MySqlConnection(connStr);
+                    // устанавливаем соединение с БД
+                    conn.Open();
+                    // запрос
+                    string sql = "SELECT * FROM user";
+                    // объект для выполнения SQL-запроса
+                    MySqlCommand command = new MySqlCommand(sql, conn);
+                    // объект для чтения ответа сервера
+                    MySqlDataReader reader = command.ExecuteReader();
+                    // читаем результат
+                    while (reader.Read())
                     {
-                        switch(reader["role"].ToString())
+                        if (oldP == reader["password"].ToString() && usersID.Value == reader["id"].ToString())
                         {
-                            case "Швея":
-                                streams.Show();
-                                this.Hide();
-                                return;
-                            case "Администратор":
-                                admin.Show();
-                                this.Hide();
-                                return;
-                            case "Бухгалтер":
-                                accountant.Show();
-                                this.Hide();
-                                return;
+                            switch (reader["role"].ToString())
+                            {
+                                case "Швея":
+                                    streams.Show();
+                                    this.Hide();
+                                    return;
+                                case "Администратор":
+                                    admin.Show();
+                                    this.Hide();
+                                    return;
+                                case "Бухгалтер":
+                                    accountant.Show();
+                                    this.Hide();
+                                    return;
+                            }
                         }
                     }
+                    MessageBox.Show("Такого пароля не существует!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    reader.Close(); // закрываем reader
+                                    // закрываем соединение с БД
+                    conn.Close();
                 }
-                MessageBox.Show("Такого пароля не существует!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                reader.Close(); // закрываем reader
-                                // закрываем соединение с БД
-                conn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

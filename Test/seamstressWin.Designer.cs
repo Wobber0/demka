@@ -51,7 +51,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(10, 15, 10, 15);
-            this.menuStrip1.Size = new System.Drawing.Size(646, 58);
+            this.menuStrip1.Size = new System.Drawing.Size(637, 58);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -86,7 +86,7 @@
             this.UserGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.UserGridView.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.UserGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.UserGridView.Location = new System.Drawing.Point(28, 3);
+            this.UserGridView.Location = new System.Drawing.Point(21, 81);
             this.UserGridView.Name = "UserGridView";
             this.UserGridView.Size = new System.Drawing.Size(571, 372);
             this.UserGridView.TabIndex = 1;
@@ -103,11 +103,10 @@
             // panel1
             // 
             this.panel1.AutoScroll = true;
-            this.panel1.Controls.Add(this.UserGridView);
             this.panel1.Controls.Add(this.info);
-            this.panel1.Location = new System.Drawing.Point(12, 91);
+            this.panel1.Location = new System.Drawing.Point(12, 71);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(634, 402);
+            this.panel1.Size = new System.Drawing.Size(602, 402);
             this.panel1.TabIndex = 4;
             // 
             // seamstressWin
@@ -116,7 +115,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(646, 523);
+            this.ClientSize = new System.Drawing.Size(637, 517);
+            this.Controls.Add(this.UserGridView);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.panel1);
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;

@@ -51,9 +51,22 @@ namespace Test
         }
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            authorization AUTH = new authorization();
-            AUTH.Show();
-            this.Hide();
+            // Создаем форму подтверждения
+            ConfExitWin confirmForm = new ConfExitWin();
+            DialogResult result = confirmForm.ShowDialog();
+
+            if (result == DialogResult.Yes)
+            {
+                // Закрываем текущую форму и открываем авторизацию
+                this.Hide();
+                authorization Form = new authorization();
+                Form.Show();
+            }
+            else
+            {
+                // Просто закрываем диалог, основная форма остается
+                confirmForm.Close();
+            }
         }
 
         private void accountantWin_FormClosing(object sender, FormClosingEventArgs e)
@@ -78,8 +91,7 @@ namespace Test
                                s.total_salary AS 'Расходы на зарплаты',
                                m.total_materials AS 'Расходы на материалы',
                                s.total_salary + m.total_materials AS 'Общие расходы'
-                             FROM salary_expenses s, material_expenses m;");
-                MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);            
+                             FROM salary_expenses s, material_expenses m;");            
         }
 
         private void заказыToolStripMenuItem_Click(object sender, EventArgs e)
@@ -114,8 +126,6 @@ namespace Test
                                 o.service_id, s.name
                             ORDER BY 
                                 SUM(o.cost) DESC;");
-                MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-         
         }
     }
 }

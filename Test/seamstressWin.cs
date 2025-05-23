@@ -39,9 +39,22 @@ namespace Test
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            authorization autor = new authorization();
-            autor.Show();
-            this.Hide();
+            // Создаем форму подтверждения
+            ConfExitWin confirmForm = new ConfExitWin();
+            DialogResult result = confirmForm.ShowDialog();
+
+            if (result == DialogResult.Yes)
+            {
+                // Закрываем текущую форму и открываем авторизацию
+                this.Hide();
+                authorization Form = new authorization();
+                Form.Show();
+            }
+            else
+            {
+                // Просто закрываем диалог, основная форма остается
+                confirmForm.Close();
+            }
         }
 
         private void InfoMenuItem_Click(object sender, EventArgs e)

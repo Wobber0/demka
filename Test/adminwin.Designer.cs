@@ -46,6 +46,7 @@
             this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BDGridView = new System.Windows.Forms.DataGridView();
             this.save = new System.Windows.Forms.Button();
+            this.меркиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.BDGridView)).BeginInit();
             this.SuspendLayout();
@@ -82,7 +83,8 @@
             this.услугиToolStripMenuItem1,
             this.платежиToolStripMenuItem,
             this.материалыЗаказовToolStripMenuItem,
-            this.заказыПользователейToolStripMenuItem});
+            this.заказыПользователейToolStripMenuItem,
+            this.меркиToolStripMenuItem});
             this.новыйПользовательToolStripMenuItem.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.новыйПользовательToolStripMenuItem.Name = "новыйПользовательToolStripMenuItem";
             this.новыйПользовательToolStripMenuItem.Size = new System.Drawing.Size(111, 28);
@@ -201,6 +203,13 @@
             this.save.UseVisualStyleBackColor = false;
             this.save.Click += new System.EventHandler(this.SaveChanges_Click);
             // 
+            // меркиToolStripMenuItem
+            // 
+            this.меркиToolStripMenuItem.Name = "меркиToolStripMenuItem";
+            this.меркиToolStripMenuItem.Size = new System.Drawing.Size(317, 28);
+            this.меркиToolStripMenuItem.Text = "Мерки";
+            this.меркиToolStripMenuItem.Click += new System.EventHandler(this.меркиToolStripMenuItem_Click);
+            // 
             // AdminWin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,5 +250,6 @@
         private System.Windows.Forms.Button save;
         private System.Windows.Forms.ToolStripMenuItem материалыЗаказовToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem заказыПользователейToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem меркиToolStripMenuItem;
     }
 }
