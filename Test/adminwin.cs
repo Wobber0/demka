@@ -1,4 +1,5 @@
 ﻿using DocumentFormat.OpenXml.Spreadsheet;
+using DocumentFormat.OpenXml.Wordprocessing;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -15,27 +16,11 @@ namespace Test
 {
     public partial class AdminWin : Form
     {
-
-        string connectionString = "Server=localhost;Port=3306;Database=hotelbd;Username=root;Password=root;";
+        string nameT;
         public AdminWin()
         {
             InitializeComponent();
-
             this.FormClosing += new FormClosingEventHandler(AdminWin_FormClosing);
-            saveFileDialog1.Filter = "Text files(*.txt)|*.txt|All files(*.*)|*.*";
-        }
-
-
-        void ShowClienttInGrid(string comm)
-        {
-            MySqlConnection conn = new MySqlConnection(connectionString);
-            conn.Open();
-            string query = comm;
-            MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
-            DataTable table = new DataTable();
-            adapter.Fill(table);
-            BDGridView.DataSource = table;
-            conn.Close();
         }
 
         private void AdminWin_FormClosing(object sender, FormClosingEventArgs e)
@@ -43,86 +28,106 @@ namespace Test
             Application.Exit();
         }
 
-        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        private void Exit_Click(object sender, EventArgs e)//возвращение к вкладке авторизации
         {
             authorization autor = new authorization();
             autor.Show();
             this.Hide();
         }
-
-        private void UsersMenuItem_Click(object sender, EventArgs e)
+        private void seeUsers_Click(object sender, EventArgs e)//показ пользователей
         {
-            Privet.Visible = false;
-            pictureBox1.Visible = false;
-            BDGridView.Visible = true;
-            SaveBut.Visible = true;
-            ReportZone.Visible = false;
-            SaveBut.Text = "Сохранить изменения";
-            try
+            nameT = "user";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
+        }
+
+        private void addUsers_Click(object sender, EventArgs e)//открытие окна добавления пользователей
+        {
+            addUsersForm addUsersForm = new addUsersForm();
+            addUsersForm.ShowDialog();
+        }
+
+        private void delitUsers_Click(object sender, EventArgs e)//открытие окна удаления пользователей
+        {
+            delUsers delUsers = new delUsers();
+            delUsers.ShowDialog();
+            
+        }
+
+        private void updateUsers_Click(object sender, EventArgs e)//открытие окна обновления пользователей
+        {
+            updateUsers updateUsers = new updateUsers();
+            updateUsers.ShowDialog();
+        }
+
+        private void выходToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Создаем форму подтверждения
+            ConfExitWin confirmForm = new ConfExitWin();
+            DialogResult result = confirmForm.ShowDialog();
+
+            if (result == DialogResult.Yes)
             {
-                ShowClienttInGrid("SELECT login, password, role FROM users");
+                // Закрываем текущую форму и открываем авторизацию
+                this.Hide();
+                authorization Form = new authorization();
+                Form.Show();
             }
-            catch
+            else
             {
-                MessageBox.Show("Ошибка подключения к БД!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // Просто закрываем диалог, основная форма остается
+                confirmForm.Close();
             }
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-        }
-        private void ReportMenuItem_Click(object sender, EventArgs e)
-        {
-            BDGridView.Visible=false;
-            Privet.Visible = false;
-            pictureBox1.Visible = false;
-            ReportZone.Visible = true;
-            SaveBut.Visible = true;
-            Report.Visible = true ;
-            SaveBut.Text = "Сохранить в отдельный документ";
-            Report.MaximumSize = new System.Drawing.Size(520, Report.MaximumSize.Height);
         }
 
-        private void SaveBut_Click(object sender, EventArgs e)
+        private void услугиToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-             if (saveFileDialog1.ShowDialog() == DialogResult.Cancel)
-                 return;
-             // получаем выбранный файл
-             string filename = saveFileDialog1.FileName;
-             // сохраняем текст в файл
-             System.IO.File.WriteAllText(filename, Report.Text);
-            MessageBox.Show("Отчет был успешно сохранен!", "Поздравляем!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            nameT = "service";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
+
         }
 
-        private void NumberMenuItem_Click(object sender, EventArgs e)
-        {
-            Privet.Visible = false;
-            pictureBox1.Visible = false;
-            BDGridView.Visible = true;
-            SaveBut.Visible = true;
-            ReportZone.Visible = false;
-            SaveBut.Text = "Сохранить изменения";
-            ShowClienttInGrid("SELECT * FROM number_of_rooms");
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+        private void платежиToolStripMenuItem_Click(object sender, EventArgs e)
+        {   nameT = "payment";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
         }
 
-        private void StatusMenuItem_Click(object sender, EventArgs e)
-        {
-            Privet.Visible = false;
-            pictureBox1.Visible = false;
-            BDGridView.Visible = true;
-            SaveBut.Visible = true;
-            ReportZone.Visible = false;
-            ShowClienttInGrid("SELECT number_of_rooms_number, status, departure_date FROM status_of_rooms");
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+        private void MaterialToolStripMenuItem_Click(object sender, EventArgs e)
+        {   nameT = "material";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
         }
 
-        private void ClientMenuItem_Click(object sender, EventArgs e)
+        private void OrdersToolStripMenuItem_Click(object sender, EventArgs e)
+        {   nameT = "order";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
+        }
+
+        private void ClientToolStripMenuItem_Click(object sender, EventArgs e)
+        {   nameT = "client";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
+        }
+
+        private void SaveChanges_Click(object sender, EventArgs e)
         {
-            Privet.Visible = false;
-            pictureBox1.Visible = false;
-            BDGridView.Visible = true;
-            SaveBut.Visible = true;
-            ReportZone.Visible = false;
-            ShowClienttInGrid("SELECT number_of_rooms_number, name, entry, exit FROM clients");
-            BDGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            DatabaseHelper.SaveChanges(BDGridView, nameT);
+        }
+
+        private void материалыЗаказовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nameT = "order_has_material";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
+        }
+
+        private void заказыПользователейToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nameT = "user_has_order";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
+        }
+
+        private void меркиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            nameT = "measurements";
+            DatabaseHelper.LoadDataIntoGrid(BDGridView, nameT);
         }
     }
     }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(passwordchange));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.warningLbl = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,19 +53,18 @@
             this.groupBox1.Controls.Add(this.OldPasswordBox);
             this.groupBox1.Controls.Add(this.NewPasswordBox);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.groupBox1.Location = new System.Drawing.Point(75, 48);
+            this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.groupBox1.Location = new System.Drawing.Point(40, 40);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(404, 357);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Измените выданный пароль:";
+            this.groupBox1.Text = "Изменение пароля";
             // 
             // warningLbl
             // 
             this.warningLbl.AutoSize = true;
-            this.warningLbl.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.warningLbl.Location = new System.Drawing.Point(32, 242);
             this.warningLbl.Name = "warningLbl";
             this.warningLbl.Size = new System.Drawing.Size(0, 21);
@@ -84,16 +84,18 @@
             // 
             this.approvalPasswordBox.Location = new System.Drawing.Point(86, 215);
             this.approvalPasswordBox.Name = "approvalPasswordBox";
-            this.approvalPasswordBox.Size = new System.Drawing.Size(212, 32);
+            this.approvalPasswordBox.Size = new System.Drawing.Size(212, 27);
             this.approvalPasswordBox.TabIndex = 4;
+            this.approvalPasswordBox.UseSystemPasswordChar = true;
             this.approvalPasswordBox.TextChanged += new System.EventHandler(this.approvalPasswordBox_TextChanged);
+            this.approvalPasswordBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.approvalPasswordBox_KeyDown);
             // 
             // ChangePassword
             // 
             this.ChangePassword.BackColor = System.Drawing.Color.Bisque;
             this.ChangePassword.FlatAppearance.BorderSize = 0;
             this.ChangePassword.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ChangePassword.Font = new System.Drawing.Font("Century Gothic", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChangePassword.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ChangePassword.Location = new System.Drawing.Point(113, 279);
             this.ChangePassword.Name = "ChangePassword";
             this.ChangePassword.Size = new System.Drawing.Size(161, 59);
@@ -101,6 +103,7 @@
             this.ChangePassword.Text = "Изменить";
             this.ChangePassword.UseVisualStyleBackColor = false;
             this.ChangePassword.Click += new System.EventHandler(this.ChangePassword_Click);
+            this.ChangePassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ChangePassword_KeyDown);
             // 
             // label3
             // 
@@ -126,27 +129,31 @@
             // 
             this.OldPasswordBox.Location = new System.Drawing.Point(86, 77);
             this.OldPasswordBox.Name = "OldPasswordBox";
-            this.OldPasswordBox.Size = new System.Drawing.Size(212, 32);
-            this.OldPasswordBox.TabIndex = 2;
+            this.OldPasswordBox.Size = new System.Drawing.Size(212, 27);
+            this.OldPasswordBox.TabIndex = 0;
+            this.OldPasswordBox.UseSystemPasswordChar = true;
             this.OldPasswordBox.TextChanged += new System.EventHandler(this.OldPasswordBox_TextChanged);
+            this.OldPasswordBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OldPasswordBox_KeyDown);
             // 
             // NewPasswordBox
             // 
             this.NewPasswordBox.Location = new System.Drawing.Point(87, 144);
             this.NewPasswordBox.Name = "NewPasswordBox";
-            this.NewPasswordBox.Size = new System.Drawing.Size(212, 32);
+            this.NewPasswordBox.Size = new System.Drawing.Size(212, 27);
             this.NewPasswordBox.TabIndex = 1;
             this.NewPasswordBox.TextChanged += new System.EventHandler(this.NewPasswordBox_TextChanged);
+            this.NewPasswordBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NewPasswordBox_KeyDown);
             // 
             // passwordchange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(545, 443);
+            this.ClientSize = new System.Drawing.Size(483, 443);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "passwordchange";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "passwordchange";
+            this.Text = "Ashy Horizon";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.passwordchange_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

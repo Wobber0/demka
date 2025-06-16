@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.40, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.41, for Win64 (x86_64)
 --
--- Host: localhost    Database: hotelbd
+-- Host: 127.0.0.1    Database: atelie
 -- ------------------------------------------------------
--- Server version	8.0.40
+-- Server version	8.0.41
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,32 +16,33 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `clients`
+-- Table structure for table `user`
 --
 
-DROP TABLE IF EXISTS `clients`;
+DROP TABLE IF EXISTS `user`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `clients` (
+CREATE TABLE `user` (
   `id` int NOT NULL,
-  `number_of_rooms_number` int NOT NULL,
-  `name` varchar(45) NOT NULL,
-  `entry` date NOT NULL,
-  `exit` date DEFAULT NULL,
-  PRIMARY KEY (`id`,`number_of_rooms_number`),
-  KEY `fk_Clients_number_of_rooms1_idx` (`number_of_rooms_number`),
-  CONSTRAINT `fk_Clients_number_of_rooms1` FOREIGN KEY (`number_of_rooms_number`) REFERENCES `number_of_rooms` (`number`)
+  `name` varchar(100) NOT NULL,
+  `salary` float NOT NULL,
+  `role` varchar(45) NOT NULL,
+  `login` varchar(45) NOT NULL,
+  `password` varchar(45) NOT NULL,
+  `ban` int NOT NULL,
+  `auth` int NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `clients`
+-- Dumping data for table `user`
 --
 
-LOCK TABLES `clients` WRITE;
-/*!40000 ALTER TABLE `clients` DISABLE KEYS */;
-INSERT INTO `clients` VALUES (1,101,'Шевченко Ольга Викторовна','2025-02-14','2025-02-03'),(2,102,'Мазалова Ирина Львовна','2025-02-28',NULL),(3,104,'Семеняка Юрий Геннадьевич','2025-02-23','2025-03-02'),(4,105,'Савельев Олег Иванович','2025-03-01','2025-03-07'),(5,110,'Александров Петр Константинович','2025-02-14','2025-02-20');
-/*!40000 ALTER TABLE `clients` ENABLE KEYS */;
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'Ольга Васильевна Кузнецова',40000,'Швея','kuznec@atelie.com','olKu22&%',3,1),(2,'Александра Петровна Васильева',50000,'Администратор','vasil@atelie.com','Alva5#4',3,1),(3,'Елена Андреевна Морозова',45000,'Бухгалтер','morozz@atelie.com','el1T%$',3,1),(4,'админчик',0,'Администратор','admin','admin',3,1),(5,'test',55555,'test','test@atelie.com','test',3,0),(6,'Швея2',40000,'Швея','seamstress1','seamstress1',3,1),(7,'Швея3',40000,'Швея','seamstress2','seamstress2',3,1);
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -53,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-02-24 14:28:35
+-- Dump completed on 2025-03-19 16:15:38

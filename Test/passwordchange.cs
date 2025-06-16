@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 
 namespace Test
 {
@@ -22,23 +22,59 @@ namespace Test
         string oldP;
         string newP;
         string appP;
+        string connStr = "server=localhost;user=root;database=atelie;password=root;";
         private void ChangePassword_Click(object sender, EventArgs e)
         {
-           AdminWin adm = new AdminWin();
-           UserWin user = new UserWin();
-            if (oldP=="a")
+            try
             {
-                adm.Show();
-                this.Hide();
+                if (newP == appP)
+                {
+                    AdminWin admin = new AdminWin();
+                    seamstressWin streams = new seamstressWin();
+                    accountantWin accountant = new accountantWin();
+                    // строка подключения к БД
+                    // создаём объект для подключения к БД
+                    MySqlConnection conn = new MySqlConnection(connStr);
+                    // устанавливаем соединение с БД
+                    conn.Open();
+                    // запрос
+                    string sql = "SELECT * FROM user";
+                    // объект для выполнения SQL-запроса
+                    MySqlCommand command = new MySqlCommand(sql, conn);
+                    // объект для чтения ответа сервера
+                    MySqlDataReader reader = command.ExecuteReader();
+                    // читаем результат
+                    while (reader.Read())
+                    {
+                        if (oldP == reader["password"].ToString() && usersID.Value == reader["id"].ToString())
+                        {
+                            switch (reader["role"].ToString())
+                            {
+                                case "Швея":
+                                    streams.Show();
+                                    this.Hide();
+                                    return;
+                                case "Администратор":
+                                    admin.Show();
+                                    this.Hide();
+                                    return;
+                                case "Бухгалтер":
+                                    accountant.Show();
+                                    this.Hide();
+                                    return;
+                            }
+                        }
+                    }
+                    MessageBox.Show("Такого пароля не существует!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    reader.Close(); // закрываем reader
+                                    // закрываем соединение с БД
+                    conn.Close();
+                }
+
             }
-            else if(oldP=="e")
+            catch (Exception ex)
             {
-                user.Show();
-                this.Hide();
-            }
-            else
-            {
-                MessageBox.Show("Такого пароля не существует!", "Предупреждение!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(ex.ToString(), "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -62,6 +98,44 @@ namespace Test
         private void passwordchange_FormClosing(object sender, FormClosingEventArgs e)
         {
             Application.Exit();
+            MySqlConnection conn = new MySqlConnection(connStr);
+            // устанавливаем соединение с БД
+            conn.Open();
+            // запрос
+            string sql = $"UPDATE user SET password = '{NewPasswordBox.Text}' WHERE id = '{usersID.Value}';";
+            // объект для выполнения SQL-запроса
+            MySqlCommand command = new MySqlCommand(sql, conn);
+            // объект для чтения ответа сервера
+            MySqlDataReader reader = command.ExecuteReader();
+        }
+
+        private void OldPasswordBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                NewPasswordBox.Focus();
+            }
+        }
+
+        private void NewPasswordBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                approvalPasswordBox.Focus();
+            }
+        }
+
+        private void approvalPasswordBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                ChangePassword.Focus();
+            }
+        }
+
+        private void ChangePassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            ChangePassword_Click(sender, e);
         }
     }
 }
